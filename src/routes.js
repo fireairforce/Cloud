@@ -3,10 +3,15 @@ import Loadable from 'react-loadable';
 import { Spin } from 'antd';
 
 function Loading({ error }) {
-  if(error){
+  if (error) {
     return 'Opps Error!!';
   } else {
-    return <Spin size="large">加载中</Spin>
+    return (
+      <Spin size='large'
+        style={{
+          width: '100%',
+          margin: '60px auto'
+        }} />)
   }
 }
 
@@ -15,14 +20,13 @@ const Home = Loadable({
   loading: Loading
 })
 
-
 export default [
   {
-    name:'首页',
-    icon:'home',
-    path:'/',
+    name: '首页',
+    icon: 'home',
+    path: '/',
     component: Home
   }
-] 
+]
 
 
