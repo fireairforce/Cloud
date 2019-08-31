@@ -14,5 +14,5 @@ module.exports = override(
   addWebpackAlias({
     'utils':resolve(__dirname,'./src/utils'),
     'pages':resolve(__dirname,'./src/pages')
-  }) 
+  })
 );
