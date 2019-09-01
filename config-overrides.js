@@ -16,11 +16,12 @@ module.exports = override(
   }),
   addLessLoader({
     javascriptEnabled: true,
-    localIdentName: "[local]--[hash:base64:5]" 
+    localIdentName: "[local]--[hash:base64:5]"
   }),
   addWebpackAlias({
     ["utils"]: resolve(__dirname, "./src/utils"),
     ["pages"]: resolve(__dirname, "./src/pages")
   }),
+  // 其实这个并不是很需要
   addDecoratorsLegacy()
 );
