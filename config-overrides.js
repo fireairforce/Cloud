@@ -1,18 +1,26 @@
 /* config-overrides.js */
-const { override, fixBabelImports, addLessLoader, addWebpackAlias } = require('customize-cra');
-const { resolve } = require('path');
+const {
+  override,
+  fixBabelImports,
+  addLessLoader,
+  addWebpackAlias,
+  addDecoratorsLegacy
+} = require("customize-cra");
+const { resolve } = require("path");
 
 module.exports = override(
-  fixBabelImports('import', {
-    libraryName: 'antd',
-    libraryDirectory: 'es',
-    style: 'css',
+  fixBabelImports("import", {
+    libraryName: "antd",
+    libraryDirectory: "es",
+    style: "css"
   }),
   addLessLoader({
     javascriptEnabled: true,
+    localIdentName: "[local]--[hash:base64:5]" 
   }),
   addWebpackAlias({
-    ['utils']:resolve(__dirname,'./src/utils'),
-    ['pages']:resolve(__dirname,'./src/pages')
-  })
+    ["utils"]: resolve(__dirname, "./src/utils"),
+    ["pages"]: resolve(__dirname, "./src/pages")
+  }),
+  addDecoratorsLegacy()
 );

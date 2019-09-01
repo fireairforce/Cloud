@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "antd": "^3.22.2",
+    "less": "^3.10.3",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-scripts": "3.1.1"
@@ -26,6 +27,7 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-proposal-decorators": "^7.4.4",
     "babel-plugin-import": "^1.12.1",
     "customize-cra": "^0.5.0",
     "less-loader": "^5.0.0",
