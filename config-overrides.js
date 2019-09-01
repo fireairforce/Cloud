@@ -12,7 +12,7 @@ module.exports = override(
     javascriptEnabled: true,
   }),
   addWebpackAlias({
-    'utils':resolve(__dirname,'./src/utils'),
-    'pages':resolve(__dirname,'./src/pages')
+    ['utils']:resolve(__dirname,'./src/utils'),
+    ['pages']:resolve(__dirname,'./src/pages')
   })
 );

@@ -1,9 +1,12 @@
 import React,{ Fragment } from 'react';
+import { Button } from 'antd';
 
 function Main(){
     return(
         <Fragment>
-         云想页面前端
+         <Button type="primary">
+           艾浩nb
+         </Button>
        </Fragment>
     )
 }
