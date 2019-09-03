@@ -148,7 +148,7 @@ class ValueFour extends React.Component {
                         </Form.Item>
                     </Form>
                     <div className="bar">
-
+         
                     </div>
                 </div>
             </div>
