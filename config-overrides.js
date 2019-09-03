@@ -20,7 +20,8 @@ module.exports = override(
   }),
   addWebpackAlias({
     ["utils"]: resolve(__dirname, "./src/utils"),
-    ["pages"]: resolve(__dirname, "./src/pages")
+    ["pages"]: resolve(__dirname, "./src/pages"),
+    ["assets"]: resolve(__dirname, "./src/assets"),
   }),
   // 其实这个并不是很需要
   addDecoratorsLegacy()
