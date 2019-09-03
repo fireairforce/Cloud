@@ -5,8 +5,8 @@ import {
     Input,
     Button,
 } from 'antd';
-import Verity from '../../utils/regex'
-import logo from '../../assets/color.png';
+import Verity from 'utils/regex'
+import logo from 'assets/color.png';
 
 
 const listData = [{
