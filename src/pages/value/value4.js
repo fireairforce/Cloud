@@ -13,34 +13,34 @@ const listData = [{
     id: 1,
     label: "品种",
     placeholder: "请选择品种",
-    field: "MineralComposition",
+    field: "Variety",
     pattern: Verity.chinese,
     message: "您的输入不符合规范"
 },{
     id: 2,
     label: "术语与定义",
     placeholder: "例：钻石完全是由碳结晶而成的矿物",
-    field: "ChemicalComponents",
+    field: "TerminologyDefinition",
     pattern: Verity.chinese,
     message: "您的输入不符合规范"
 },{
     id: 3,
     label: "年代产地",
     placeholder: "例：1999年，南非",
-    field: "CrystalState",
+    field: "ChronologicalOrigin",
     pattern: Verity.chinese,
     message: "您的输入不符合规范"
 },{
     id: 4,
     label: "光泽",
     placeholder: "例：金刚光色",
-    field: "MicroStructure",
+    field: "Gloss",
     pattern: Verity.chinese,
     message: "您的输入不符合规范"
 },{
     id: 5,
     label: "光线特征",
-    placeholder: "例：非均质集合体",
+    placeholder: "LightCharacteristics",
     field: "Hardness",
     pattern: Verity.number,
     message: "您的输入不符合规范"
@@ -48,7 +48,7 @@ const listData = [{
     id: 6,
     label: "荧光观察",
     placeholder: "例：x光射线下天河石-很弱的绿色",
-    field: "Density",
+    field: "FluorescenceObservation",
     pattern: Verity.chinese,
     message: "您的输入不符合规范"
 }];
