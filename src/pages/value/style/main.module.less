@@ -1,6 +1,6 @@
 .header{
     display: flex;
-    height: 70px;
+    height: 55px;
     background-color: #fff;
     align-items: center;
     overflow: auto;
@@ -8,18 +8,33 @@
         flex: 1;
         margin-left: 10px;
          img{
-             width: 14px;
-             height: 27px;
+             width: 12px;
+             height: 25px;
          } 
     }
     .title{
       flex: 2;
       display: block;
-      font-size: 28px;
+      font-size: 25px;
       color: #161616;
     }
 }
+.content{
+    height: 400px;
+    position: relative;
+    .bgc{
+      z-index: -1;
+      top: 0px;
+      position: absolute;
+      height: 150px;
+      width: 100%;
+      opacity: 0.8;
+      background-image: linear-gradient(-77deg, #AE8CEA 0%, #988FF1 40%, #6E96FC 100%);
+    }
+    
+}
 .footer{
+    margin-top: 50px;
     display: flex;
     align-items: center;
     .middle{

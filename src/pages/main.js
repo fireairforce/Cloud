@@ -22,14 +22,23 @@ const componentMap = [
   ValueSeven,
 ]
 
+
+
 function Main() {
+  const handleBack = () => {
+    console.log('test');
+  }
   return (
     <Fragment>
        <div className={styles.header}>
-         <div className={styles.back}>
+         <div className={styles.back} onClick={handleBack}>
            <img src={back} alt="back"/>
          </div>
          <span className={styles.title}>填写信息</span>
+       </div>
+       <div className={styles.content}>
+          <div className={styles.bgc}></div>
+          <ValueOne /> 
        </div>
        <div className={styles.footer}>
          <div className={styles.middle}>

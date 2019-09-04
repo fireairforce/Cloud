@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { From,Input } from 'antd';
 import Verity from 'utils/regex';
+import styles from './style/value.module.less';
 
 function ValueOne(props){
   return(
-      <div>
-          ValueOne页面
-      </div>
+    <Fragment>
+       <div className={styles.wrapper}>
+           
+       </div>
+    </Fragment>
   )
 }
 
