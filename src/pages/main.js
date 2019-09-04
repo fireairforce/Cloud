@@ -50,6 +50,7 @@ function Main() {
            </Button>
          </div>
        </div>
+       <div className={styles.bgcB}></div>
     </Fragment>
   );
 }
