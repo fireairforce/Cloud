@@ -1,5 +1,5 @@
 import React from "react";
-import './style/index.less';
+import './style/value.less';
 import {
     Form,
     Input,
@@ -7,7 +7,6 @@ import {
 } from 'antd';
 import Verity from 'utils/regex'
 import logo from 'assets/color.png';
-
 
 const listData = [{
     id: 1,
@@ -99,7 +98,7 @@ class ValueThree extends React.Component {
         };
 
         return (
-            <div className="global">
+            <div className="wrapper">
                 <div className="header">
                     <p>填写表单</p>
                 </div>
