@@ -16,7 +16,7 @@ function Loading({ error }) {
 }
 
 const Home = Loadable({
-  loader: () => import('./pages'),
+  loader: () => import('./pages/main'),
   loading: Loading
 });
 

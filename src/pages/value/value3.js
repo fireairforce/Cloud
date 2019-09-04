@@ -2,11 +2,9 @@ import React from "react";
 import './style/value.less';
 import {
     Form,
-    Input,
-    Button,
+    Input
 } from 'antd';
-import Verity from 'utils/regex'
-import logo from 'assets/color.png';
+import Verity from 'utils/regex';
 
 const listData = [{
     id: 1,
@@ -84,27 +82,9 @@ class ValueThree extends React.Component {
                 sm: { span: 16 },
             },
         };
-        const tailFormItemLayout = {
-            wrapperCol: {
-                xs: {
-                    span: 24,
-                    offset: 0,
-                },
-                sm: {
-                    span: 16,
-                    offset: 8,
-                },
-            },
-        };
 
         return (
             <div className="wrapper">
-                <div className="header">
-                    <p>填写表单</p>
-                </div>
-                <div className="logo">
-                    <img src={logo} alt="" />
-                </div>
                 <div className="banner">
                 </div>
                 <div className="middle">
@@ -132,14 +112,6 @@ class ValueThree extends React.Component {
                                 </Form.Item>
                             )
                         })}
-                        <Form.Item {...tailFormItemLayout} className="buttonWrapper">
-                            <Button type="primary" htmlType="button" className="back">
-                                go back
-                            </Button>
-                            <Button type="primary" htmlType="submit">
-                                submit
-                            </Button>
-                        </Form.Item>
                     </Form>
                     <div className="bar">
 
