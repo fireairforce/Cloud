@@ -7,7 +7,7 @@ import { valueOption1 } from "utils/options";
 // 七牛默认的上传地址
 const QINIU_SERVER = "http://upload.qiniup.com";
 // bucket绑定的URL
-const BASE_QINIU_URL = "http://wdlj.zoomdong.xin";
+const BASE_QINIU_URL = "http://wdlj.zoomdong.xin/";
 const FormItem = Form.Item;
 const Option = Select.Option;
 const { TextArea } = Input;
@@ -16,15 +16,7 @@ function ValueOne(props) {
   const [previewVisible, setPreviewVisible] = useState(false);
   const [previewImage, setPreviewImage] = useState("");
   const [token, setToken] = useState("");
-  const [fileList, setFileList] = useState([
-    {
-      uid: "-1",
-      name: "image.png",
-      status: "done",
-      url:
-        "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
-    }
-  ]);
+  const [fileList, setFileList] = useState([]);
   const { getFieldDecorator } = props.form;
   const formItemLayout = {
     labelCol: {
@@ -47,8 +39,6 @@ function ValueOne(props) {
   };
 
   const handleChange = ({ file, fileList }) => {
-    console.log('上传一波');
-    console.log(file);
     const { uid, name, type, thumbUrl, status, response = {} } = file;
     const fileItem = {
       uid,
@@ -60,8 +50,7 @@ function ValueOne(props) {
     };
     fileList.pop();
     fileList.push(fileItem);
-    setFileList({ fileList });
-
+    setFileList( fileList );
   };
 
   const getUploadToken = () => {
@@ -133,7 +122,7 @@ function ValueOne(props) {
               })(
                 <Upload
                   action={QINIU_SERVER}
-                  data={token}
+                  data={{token}}
                   listType="picture-card"
                   beforeUpload={getUploadToken}
                   fileList={fileList}
