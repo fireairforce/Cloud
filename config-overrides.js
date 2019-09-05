@@ -4,7 +4,8 @@ const {
   fixBabelImports,
   addLessLoader,
   addWebpackAlias,
-  addDecoratorsLegacy
+  addDecoratorsLegacy,
+  removeModuleScopePlugin
 } = require("customize-cra");
 const { resolve } = require("path");
 
@@ -24,5 +25,7 @@ module.exports = override(
     ["assets"]: resolve(__dirname, "./src/assets"),
   }),
   // 其实这个并不是很需要
-  addDecoratorsLegacy()
+  addDecoratorsLegacy(),
+  // 解决了一个create-react-app引入bug
+  removeModuleScopePlugin()
 );

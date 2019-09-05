@@ -1,24 +1,21 @@
 import React, { Fragment, useState } from "react";
-import { Form, Input, Select, Upload, Icon } from "antd";
-import Verity from "utils/regex";
+import { Form, Input, Select, Upload, Icon, Modal } from "antd";
 import styles from "./style/value.module.less";
+import { getToken } from "utils/qiniu";
+import { valueOption1 } from "utils/options";
 
+// 七牛默认的上传地址
+const QINIU_SERVER = "http://upload.qiniup.com";
+// bucket绑定的URL
+const BASE_QINIU_URL = "http://wdlj.zoomdong.xin";
 const FormItem = Form.Item;
 const Option = Select.Option;
 const { TextArea } = Input;
 
-function getBase64(file) {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => resolve(reader.result);
-    reader.onerror = error => reject(error);
-  });
-}
-
 function ValueOne(props) {
   const [previewVisible, setPreviewVisible] = useState(false);
   const [previewImage, setPreviewImage] = useState("");
+  const [token, setToken] = useState("");
   const [fileList, setFileList] = useState([
     {
       uid: "-1",
@@ -39,47 +36,46 @@ function ValueOne(props) {
       sm: { span: 16 }
     }
   };
-  // 选项权利
-  const options = [
-    {
-      value: "玛瑙",
-      id: 0
-    },
-    {
-      value: "翡翠",
-      id: 1
-    },
-    {
-      value: "珍珠",
-      id: 2
-    },
-    {
-      value: "钻石",
-      id: 3
-    },
-    {
-      value: "蓝宝石",
-      id: 4
-    }
-  ];
-  const handlePreview = async file => {
-    if (!file.url && !file.preview) {
-      file.preview = await getBase64(file.originFileObj);
-    }
-    setPreviewImage(file.url || file.preview);
+
+  const handlePreview = file => {
+    setPreviewImage(file.url || file.thumbUrl);
     setPreviewVisible(true);
   };
 
-  const handleChange = ({ fileList }) => {
-    setFileList({ fileList });
+  const handleCancel = () => {
+    setPreviewVisible(false);
   };
+
+  const handleChange = ({ file, fileList }) => {
+    console.log('上传一波');
+    console.log(file);
+    const { uid, name, type, thumbUrl, status, response = {} } = file;
+    const fileItem = {
+      uid,
+      name,
+      type,
+      thumbUrl,
+      status,
+      url: BASE_QINIU_URL + (response.hash || "")
+    };
+    fileList.pop();
+    fileList.push(fileItem);
+    setFileList({ fileList });
+
+  };
+
+  const getUploadToken = () => {
+    const token = getToken();
+    setToken(token);
+  } 
 
   const uploadButton = (
     <div>
       <Icon type="plus" />
-      <div className="ant-upload-text">Upload</div>
+      <div className="ant-upload-text">上传</div>
     </div>
   );
+
   return (
     <Fragment>
       <Form>
@@ -95,7 +91,7 @@ function ValueOne(props) {
                 ]
               })(
                 <Select placeholder="请选择宝石">
-                  {options.map(item => (
+                  {valueOption1.map(item => (
                     <Option key={item.id} value={item.id}>
                       {item.value}
                     </Option>
@@ -136,13 +132,15 @@ function ValueOne(props) {
                 ]
               })(
                 <Upload
-                  action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+                  action={QINIU_SERVER}
+                  data={token}
                   listType="picture-card"
+                  beforeUpload={getUploadToken}
                   fileList={fileList}
                   onPreview={handlePreview}
                   onChange={handleChange}
                 >
-                  {fileList.length >= 8 ? null : uploadButton}
+                  {fileList.length >= 4 ? null : uploadButton}
                 </Upload>
               )}
             </FormItem>
@@ -164,6 +162,9 @@ function ValueOne(props) {
             </FormItem>
           </Form>
         </div>
+        <Modal visible={previewVisible} footer={null} onCancel={handleCancel}>
+          <img style={{ width: "100%" }} src={previewImage} alt="previewImg" />
+        </Modal>
       </Form>
     </Fragment>
   );
