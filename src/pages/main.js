@@ -39,7 +39,10 @@ function Main() {
           <div className={styles.bgc}></div>
           {/* <ValueOne />  */}
           {/* <ValueTwo /> */}
-          <ValueThree />
+          {/* <ValueThree /> */}
+          {/* <ValueFour /> */}
+          {/* <ValueFive /> */}
+          <ValueSix />
        </div>
        <div className={styles.footer}>
          <div className={styles.middle}>
