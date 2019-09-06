@@ -42,7 +42,8 @@ function Main() {
           {/* <ValueThree /> */}
           {/* <ValueFour /> */}
           {/* <ValueFive /> */}
-          <ValueSix />
+          {/* <ValueSix /> */}
+          <ValueSeven />
        </div>
        <div className={styles.footer}>
          <div className={styles.middle}>
