@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import { Form } from 'antd';
 
 function ValueSeven(props){
   const { getFieldDecorator } = props.form;
@@ -20,4 +21,4 @@ function ValueSeven(props){
   )
 }
 
-export default ValueSeven;
+export default Form.create()(ValueSeven);
