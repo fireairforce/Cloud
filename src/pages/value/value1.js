@@ -120,6 +120,7 @@ function ValueOne(props) {
                   }
                 ]
               })(
+                <>
                 <Upload
                   action={QINIU_SERVER}
                   data={{token}}
@@ -131,10 +132,12 @@ function ValueOne(props) {
                 >
                   {fileList.length >= 4 ? null : uploadButton}
                 </Upload>
+                <span className={styles.value1Content}>您最多只能上传四张图片</span>
+                </>
               )}
             </FormItem>
 
-            <FormItem label="外观描述" {...formItemLayout}>
+            <FormItem label="外观描述" {...formItemLayout} className={styles.value1desc}>
               {getFieldDecorator("description", {
                 rules: [
                   {

@@ -23,7 +23,6 @@ const componentMap = [
 ]
 
 
-
 function Main() {
   const handleBack = () => {
     console.log('test');
@@ -38,7 +37,9 @@ function Main() {
        </div>
        <div className={styles.content}>
           <div className={styles.bgc}></div>
-          <ValueOne /> 
+          {/* <ValueOne />  */}
+          {/* <ValueTwo /> */}
+          <ValueThree />
        </div>
        <div className={styles.footer}>
          <div className={styles.middle}>
