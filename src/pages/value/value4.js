@@ -68,9 +68,8 @@ function ValueFour(props) {
   };
   return (
     <Fragment>
-      <Form>
+      <Form layout="horizontal" {...formItemLayout}>
         <div className={styles.wrapper}>
-          <Form layout="horizontal" {...formItemLayout}>
             {listData.map(item => {
               return (
                 <Form.Item label={item.label} key={item.id}>
@@ -92,7 +91,6 @@ function ValueFour(props) {
                 </Form.Item>
               );
             })}
-          </Form>
         </div>
       </Form>
     </Fragment>

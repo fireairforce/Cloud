@@ -67,9 +67,8 @@ function ValueOne(props) {
 
   return (
     <Fragment>
-      <Form>
+      <Form layout="horizontal">
         <div className={styles.wrapper}>
-          <Form layout="horizontal">
             <FormItem label="宝玉石名称" {...formItemLayout}>
               {getFieldDecorator("name", {
                 rules: [
@@ -152,7 +151,6 @@ function ValueOne(props) {
                 />
               )}
             </FormItem>
-          </Form>
         </div>
         <Modal visible={previewVisible} footer={null} onCancel={handleCancel}>
           <img style={{ width: "100%" }} src={previewImage} alt="previewImg" />

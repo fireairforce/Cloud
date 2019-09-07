@@ -65,9 +65,8 @@ function ValueSeven(props) {
 
   return (
     <Fragment>
-      <Form>
+      <Form layout="horizontal" {...formItemLayout}>
         <div className={styles.wrapper}>
-          <Form layout="horizontal" {...formItemLayout}>
             <FormItem label="您的宝石是否有鉴定报告" {...formItemLayout}>
               {getFieldDecorator("jdbg", {
                 rules: [
@@ -174,8 +173,6 @@ function ValueSeven(props) {
                 ]
               })(<Input placeholder="请描述宝石的获奖情况" />)}
             </FormItem>
-
-          </Form>
         </div>
         <Modal visible={previewVisible} footer={null} onCancel={handleCancel}>
           <img style={{ width: "100%" }} src={previewImage} alt="previewImg" />
