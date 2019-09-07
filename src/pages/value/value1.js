@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import { Form, Input, Select, Upload, Icon, Modal } from "antd";
 import styles from "./style/value.module.less";
 import { getToken } from "utils/qiniu";

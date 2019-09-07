@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment ,useRef } from "react";
 // 组件
 import ValueOne from './value/value1';
 import ValueTwo from './value/value2';
@@ -27,6 +27,7 @@ function Main() {
   const handleBack = () => {
     console.log('test');
   }
+  
   return (
     <Fragment>
        <div className={styles.header}>
@@ -37,13 +38,21 @@ function Main() {
        </div>
        <div className={styles.content}>
           <div className={styles.bgc}></div>
+          {
+            componentMap.map((FormItem,index)=>(
+              <FormItem
+
+                // className={styles.hide}
+              />
+            ))
+          }
           {/* <ValueOne />  */}
           {/* <ValueTwo /> */}
           {/* <ValueThree /> */}
           {/* <ValueFour /> */}
           {/* <ValueFive /> */}
           {/* <ValueSix /> */}
-          <ValueSeven />
+          {/* <ValueSeven /> */}
        </div>
        <div className={styles.footer}>
          <div className={styles.middle}>
