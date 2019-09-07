@@ -1,9 +1,9 @@
-import React, { Fragment, useState } from "react";
+import React, {  useState, useEffect } from "react";
 import { Form, Input, Select, Upload, Icon, Modal } from "antd";
 import styles from "./style/value.module.less";
 import { getToken } from "utils/qiniu";
 import { valueOption1 } from "utils/options";
-
+import './style/value.less';
 // 七牛默认的上传地址
 const QINIU_SERVER = "http://upload.qiniup.com";
 // bucket绑定的URL
@@ -64,12 +64,10 @@ function ValueOne(props) {
       <div className="ant-upload-text">上传</div>
     </div>
   );
-
   return (
-    <Fragment>
-      <Form>
+    <div className={props.class}>
+      <Form layout="horizontal">
         <div className={styles.wrapper}>
-          <Form layout="horizontal">
             <FormItem label="宝玉石名称" {...formItemLayout}>
               {getFieldDecorator("name", {
                 rules: [
@@ -120,6 +118,7 @@ function ValueOne(props) {
                   }
                 ]
               })(
+                <>
                 <Upload
                   action={QINIU_SERVER}
                   data={{token}}
@@ -131,10 +130,12 @@ function ValueOne(props) {
                 >
                   {fileList.length >= 4 ? null : uploadButton}
                 </Upload>
+                <span className={styles.value1Content}>您最多只能上传四张图片</span>
+                </>
               )}
             </FormItem>
 
-            <FormItem label="外观描述" {...formItemLayout}>
+            <FormItem label="外观描述" {...formItemLayout} className={styles.value1desc}>
               {getFieldDecorator("description", {
                 rules: [
                   {
@@ -149,13 +150,12 @@ function ValueOne(props) {
                 />
               )}
             </FormItem>
-          </Form>
         </div>
         <Modal visible={previewVisible} footer={null} onCancel={handleCancel}>
           <img style={{ width: "100%" }} src={previewImage} alt="previewImg" />
         </Modal>
       </Form>
-    </Fragment>
+    </div>
   );
 }
 

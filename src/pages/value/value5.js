@@ -1,132 +1,109 @@
 import React from "react";
+import styles from "./style/value.module.less";
+import { Form, Input } from "antd";
+import Verity from "utils/regex";
 import './style/value.less';
-import {
-    Form,
-    Input
-} from 'antd';
-import Verity from 'utils/regex'
 
-
-const listData = [{
+const listData = [
+  {
     id: 1,
-    label: "矿物组成",
-    placeholder: "例：含水百分数可变的二氧化硅",
-    field: "MineralComposition",
+    label: "折射率",
+    placeholder: "例：1.645～1.690",
+    field: "RefractiveIndex",
     pattern: Verity.chinese,
     message: "您的输入不符合规范"
-},{
+  },
+  {
     id: 2,
-    label: "化学成分",
-    placeholder: "例：CaCo3、（Mg，Fe）2SiO4",
-    field: "ChemicalComponents",
+    label: "解理",
+    placeholder: "例：裂",
+    field: "Cleavage",
     pattern: Verity.chinese,
     message: "您的输入不符合规范"
-},{
+  },
+  {
     id: 3,
-    label: "结晶状态",
-    placeholder: "例：晶体、胶体",
-    field: "CrystalState",
+    label: "光学效应",
+    placeholder: "例：炫彩/猫眼",
+    field: "OpticalEffect",
     pattern: Verity.chinese,
     message: "您的输入不符合规范"
-},{
+  },
+  {
     id: 4,
-    label: "显微结构",
-    placeholder: "例：结构、包裹体、石英、水胆",
-    field: "MicroStructure",
+    label: "抛光",
+    placeholder: "请填写宝石的抛光详情",
+    field: "Polishing",
     pattern: Verity.chinese,
     message: "您的输入不符合规范"
-},{
+  },
+  {
     id: 5,
-    label: "摩式硬度",
-    placeholder: "例：5.5-6.5",
-    field: "Hardness",
+    label: "特殊工艺",
+    placeholder: "例：审料/切割/抛光",
+    field: "SpecialTechnology",
     pattern: Verity.number,
     message: "您的输入不符合规范"
-},{
+  },
+  {
     id: 6,
-    label: "密度",
-    placeholder: "例：1.99-2.23",
-    field: "Density",
+    label: "制作信息",
+    placeholder: "可填写制作工厂/公司/制作人",
+    field: "MakingInformation",
     pattern: Verity.chinese,
     message: "您的输入不符合规范"
-}];
+  },
+  {
+    id: 7,
+    label: "工时",
+    placeholder: "填写宝石的加工工时",
+    field: "WorkingHours",
+    pattern: Verity.chinese,
+    message: "您的输入不符合规范"
+  }
+];
 
-
-@Form.create()
-class ValueFive extends React.Component {
-
-    constructor(props) {
-        super(props);
-        this.state = {
-            confirmDirty: false,
-            autoCompleteResult: [],
-            data: []
-        };
-        this.handleSubmit = this.handleSubmit.bind(this);
+function ValueFive(props) {
+  const { getFieldDecorator } = props.form;
+  const formItemLayout = {
+    labelCol: {
+      xs: { span: 24 },
+      sm: { span: 8 }
+    },
+    wrapperCol: {
+      xs: { span: 24 },
+      sm: { span: 16 }
     }
-
-    handleSubmit (e) {
-        e.preventDefault();
-        console.log(this.props);
-        this.props.form.validateFields((err, values) => {
-            if (!err) {
-                console.log('Received values of form: ', values);
-            }
-        });
-
-        console.log(this.state.data)
-    }
-
-    render() {
-        const { getFieldDecorator } = this.props.form;
-
-        const formItemLayout = {
-            labelCol: {
-                xs: { span: 24 },
-                sm: { span: 8 },
-            },
-            wrapperCol: {
-                xs: { span: 24 },
-                sm: { span: 16 },
-            },
-        };
-
-        return (
-            <div className="wrapper">
-                <div className="banner">
-                </div>
-                <div className="middle">
-                    <Form {...formItemLayout} onSubmit={this.handleSubmit}>
-
-                        {listData.map((item)=>{
-                            return (
-                                <Form.Item label={item.label} key={item.id}>
-                                    {getFieldDecorator(item.field, {
-                                        rules: [
-                                            {
-                                                pattern: item.pattern,
-                                                message: item.message,
-                                            },
-                                        ],
-                                    })(
-                                        <div className="inputBanner">
-                                            <Input
-                                                placeholder={item.placeholder}
-                                            />
-                                        </div>
-                                        )}
-                                </Form.Item>
-                            )
-                        })}
-                    </Form>
-                    <div className="bar">
-
+  };
+  return (
+    <div className={props.class}>
+      <Form layout="horizontal" {...formItemLayout}>
+        <div className={styles.wrapper}>
+            {listData.map(item => {
+              return (
+                <Form.Item label={item.label} key={item.id}>
+                  {getFieldDecorator(item.field, {
+                    rules: [
+                      {
+                        required: false
+                      },
+                      {
+                        pattern: item.pattern,
+                        message: item.message
+                      }
+                    ]
+                  })(
+                    <div className="inputBanner">
+                      <Input placeholder={item.placeholder} />
                     </div>
-                </div>
-            </div>
-        );
-    }
+                  )}
+                </Form.Item>
+              );
+            })}
+        </div>
+      </Form>
+    </div>
+  );
 }
 
-
-export default ValueFive;
+export default Form.create()(ValueFive);
