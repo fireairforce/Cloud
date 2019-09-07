@@ -1,7 +1,8 @@
-import React, { Fragment, useState } from "react";
+import React, { useState } from "react";
 import styles from "./style/value.module.less";
 import { Upload, Form, Icon, Input, Modal } from "antd";
 import { getToken } from "utils/qiniu";
+import './style/value.less';
 
 // 七牛默认的上传地址
 const QINIU_SERVER = "http://upload.qiniup.com";
@@ -64,7 +65,7 @@ function ValueSix(props) {
   );
 
   return (
-    <Fragment>
+    <div className={props.class}>
       <Form layout="horizontal" {...formItemLayout}>
         <div className={styles.wrapper}>
           <FormItem label="上传红外光谱" {...formItemLayout}>
@@ -155,7 +156,7 @@ function ValueSix(props) {
           <img style={{ width: "100%" }} src={previewImage} alt="previewImg" />
         </Modal>
       </Form>
-    </Fragment>
+    </div>
   );
 }
 

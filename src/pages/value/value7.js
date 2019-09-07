@@ -1,7 +1,8 @@
-import React, { Fragment, useState } from "react";
+import React, { useState } from "react";
 import { Form, Radio, Input, Upload, Modal, Icon } from "antd";
 import styles from "./style/value.module.less";
 import { getToken } from "utils/qiniu";
+import './style/value.less';
 
 // 七牛默认的上传地址
 const QINIU_SERVER = "http://upload.qiniup.com";
@@ -64,7 +65,7 @@ function ValueSeven(props) {
   );
 
   return (
-    <Fragment>
+    <div className={props.class}>
       <Form layout="horizontal" {...formItemLayout}>
         <div className={styles.wrapper}>
             <FormItem label="您的宝石是否有鉴定报告" {...formItemLayout}>
@@ -178,7 +179,7 @@ function ValueSeven(props) {
           <img style={{ width: "100%" }} src={previewImage} alt="previewImg" />
         </Modal>
       </Form>
-    </Fragment>
+    </div>
   );
 }
 

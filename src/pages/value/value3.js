@@ -1,7 +1,8 @@
-import React, { Fragment } from "react";
+import React from "react";
 import styles from "./style/value.module.less";
 import { Form, Input } from "antd";
 import Verity from "utils/regex";
+import './style/value.less';
 
 const listData = [
   {
@@ -67,7 +68,7 @@ function ValueThree(props) {
     }
   };
   return (
-    <Fragment>
+    <div className={props.class}>
       <Form layout="horizontal" {...formItemLayout}>
         <div className={styles.wrapper}>
             {listData.map(item => {
@@ -90,7 +91,7 @@ function ValueThree(props) {
             })}
         </div>
       </Form>
-    </Fragment>
+    </div>
   );
 }
 

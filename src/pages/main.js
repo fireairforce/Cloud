@@ -27,6 +27,12 @@ function Main() {
     console.log("test");
   };
   const [stepIndex, setStepIndex] = useState(0);
+  const goNext = () => {
+    setStepIndex(c=>c+1);
+  }
+  const goPrev = () => {
+    setStepIndex(c=>c-1);
+  }
   return (
     <Fragment>
       <div className={styles.header}>
@@ -40,27 +46,27 @@ function Main() {
         {componentMap.map((FormItem, index) => (
           <FormItem
             key={`Value${index}`}
-            className={styles.hideIt}
+            class={stepIndex===index?'':'hide'}
           />
         ))}
       </div>
       <div className={styles.footer}>
         {stepIndex === 0 ? (
           <div className={styles.first}>
-            <Button type="primary">下一步</Button>
+            <Button type="primary" onClick={goNext}>下一步</Button>
           </div>
         ) : stepIndex !== 6 ? (
           <div className={styles.middle}>
-            <Button type="primary" className={styles.btn1}>
+            <Button type="primary" className={styles.btn1} onClick={goPrev}>
               上一步
             </Button>
-            <Button type="primary" className={styles.btn2}>
+            <Button type="primary" className={styles.btn2} onClick={goNext}>
               下一步
             </Button>
           </div>
         ) : (
           <div className={styles.end}>
-            <Button type="primary" className={styles.btn1}>
+            <Button type="primary" className={styles.btn1} onClick={goPrev}>
               上一步
             </Button>
             <Button type="primary" className={styles.btn2}>

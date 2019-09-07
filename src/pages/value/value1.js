@@ -1,9 +1,9 @@
-import React, { Fragment, useState, useEffect } from "react";
+import React, {  useState, useEffect } from "react";
 import { Form, Input, Select, Upload, Icon, Modal } from "antd";
 import styles from "./style/value.module.less";
 import { getToken } from "utils/qiniu";
 import { valueOption1 } from "utils/options";
-
+import './style/value.less';
 // 七牛默认的上传地址
 const QINIU_SERVER = "http://upload.qiniup.com";
 // bucket绑定的URL
@@ -64,9 +64,8 @@ function ValueOne(props) {
       <div className="ant-upload-text">上传</div>
     </div>
   );
-
   return (
-    <Fragment>
+    <div className={props.class}>
       <Form layout="horizontal">
         <div className={styles.wrapper}>
             <FormItem label="宝玉石名称" {...formItemLayout}>
@@ -156,7 +155,7 @@ function ValueOne(props) {
           <img style={{ width: "100%" }} src={previewImage} alt="previewImg" />
         </Modal>
       </Form>
-    </Fragment>
+    </div>
   );
 }
 
