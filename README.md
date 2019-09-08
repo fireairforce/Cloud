@@ -15,3 +15,6 @@ import styles from 'index.module.less';
 
 ## Bug Meet
 在使用`Upload`组件的时候遇见了一个上传状态的问题(刚开始以为遇见了`hooks`的闭包陷阱)，后来看了`antd`的[issue](https://github.com/ant-design/ant-design/issues/2423),解决了问题。
+
+目前正在解决的问题:
+当`antd`的`Form.create()`和`hooks`里面的`forwardRef()`同时作用在函数组件上面的时候，`forwardRef()`传递给从子组件传递到父组件的方法拿不到。
