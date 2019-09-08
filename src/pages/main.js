@@ -23,11 +23,13 @@ const componentMap = [
 ];
 
 function Main() {
+  const [stepIndex, setStepIndex] = useState(0);
+  const validateRef = useRef(null);
   const handleBack = () => {
     console.log("test");
   };
-  const [stepIndex, setStepIndex] = useState(0);
   const goNext = () => {
+    console.log(validateRef.current.test());
     setStepIndex(c=>c+1);
   }
   const goPrev = () => {
@@ -43,12 +45,16 @@ function Main() {
       </div>
       <div className={styles.content}>
         <div className={styles.bgc}></div>
-        {componentMap.map((FormItem, index) => (
+        {/* {componentMap.map((FormItem, index) => (
           <FormItem
             key={`Value${index}`}
             class={stepIndex===index?'':'hide'}
+            ref={validateRef}
           />
-        ))}
+        ))} */}
+        <ValueOne 
+        ref={validateRef}
+        />
       </div>
       <div className={styles.footer}>
         {stepIndex === 0 ? (

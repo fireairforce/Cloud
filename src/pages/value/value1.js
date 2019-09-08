@@ -1,4 +1,4 @@
-import React, {  useState, useEffect } from "react";
+import React, {  useState, useImperativeHandle,forwardRef } from "react";
 import { Form, Input, Select, Upload, Icon, Modal } from "antd";
 import styles from "./style/value.module.less";
 import { getToken } from "utils/qiniu";
@@ -12,7 +12,7 @@ const FormItem = Form.Item;
 const Option = Select.Option;
 const { TextArea } = Input;
 
-function ValueOne(props) {
+function ValueOne(props,ref) {
   const [previewVisible, setPreviewVisible] = useState(false);
   const [previewImage, setPreviewImage] = useState("");
   const [token, setToken] = useState("");
@@ -30,7 +30,6 @@ function ValueOne(props) {
   };
 
   const handlePreview = file => {
-    console.log(file);
     setPreviewImage(file.url || file.thumbUrl);
     setPreviewVisible(true);
   };
@@ -54,7 +53,6 @@ function ValueOne(props) {
     fileList.push(fileItem);
     setFileList([...fileList]);
   };
-
   const getUploadToken = () => {
     const token = getToken();
     setToken(token);
@@ -67,7 +65,17 @@ function ValueOne(props) {
     </div>
   );
 
+  useImperativeHandle(ref,()=>({
+    test:()=>{
+      validate()
+    }
+  }));
+
   const validate = () => {
+    const { form } = props;
+    form.setFieldsValue({
+      pic:fileList[0].url
+    })
     const validateArray = [
        'name',
        'color',
@@ -75,11 +83,12 @@ function ValueOne(props) {
        'pic',
        'description'
     ]
-    props.form.validate(validateArray,(err,values)=>{
-       console.log('hhhh');
+    form.validate(validateArray,(err,values)=>{
+      if(!err){
+        console.log(values);
+      }
     })
   }
-  console.log(fileList.length);
   return (
     <div className={props.class}>
       <Form layout="horizontal">
@@ -175,4 +184,4 @@ function ValueOne(props) {
   );
 }
 
-export default Form.create()(ValueOne);
+export default Form.create()(forwardRef(ValueOne));
