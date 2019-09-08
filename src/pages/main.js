@@ -24,10 +24,13 @@ const componentMap = [
 
 function Main() {
   const [stepIndex, setStepIndex] = useState(0);
-  const validateRef = useRef(null);
+  let validateRef = useRef(null);
   const handleBack = () => {
     console.log("test");
   };
+  useEffect(()=>{
+    console.log(validateRef);
+  })
   const goNext = () => {
     console.log(validateRef.current.test());
     setStepIndex(c=>c+1);
@@ -53,7 +56,7 @@ function Main() {
           />
         ))} */}
         <ValueOne 
-        ref={validateRef}
+         ref={validateRef}
         />
       </div>
       <div className={styles.footer}>
