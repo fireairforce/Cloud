@@ -89,6 +89,7 @@ function ValueOne(props,ref) {
       }
     })
   }
+  console.log(props.ref);
   return (
     <div className={props.class}>
       <Form layout="horizontal">

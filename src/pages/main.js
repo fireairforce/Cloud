@@ -48,16 +48,13 @@ function Main() {
       </div>
       <div className={styles.content}>
         <div className={styles.bgc}></div>
-        {/* {componentMap.map((FormItem, index) => (
+        {componentMap.map((FormItem, index) => (
           <FormItem
             key={`Value${index}`}
             class={stepIndex===index?'':'hide'}
-            ref={validateRef}
+            onRef={onRef}
           />
-        ))} */}
-        <ValueOne 
-         ref={validateRef}
-        />
+        ))}
       </div>
       <div className={styles.footer}>
         {stepIndex === 0 ? (
