@@ -75,7 +75,6 @@ function Main() {
           </div>
         )}
       </div>
-      <div className={styles.bgcB}></div>
     </Fragment>
   );
 }

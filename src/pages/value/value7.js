@@ -57,6 +57,10 @@ function ValueSeven(props) {
     setToken(token);
   };
 
+  const validate = () => {
+    
+  }
+
   const uploadButton = (
     <div>
       <Icon type="plus" />
