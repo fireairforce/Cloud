@@ -30,6 +30,7 @@ function ValueOne(props) {
   };
 
   const handlePreview = file => {
+    console.log(file);
     setPreviewImage(file.url || file.thumbUrl);
     setPreviewVisible(true);
   };
@@ -39,7 +40,7 @@ function ValueOne(props) {
   };
 
   const handleChange = ({ file, fileList }) => {
-    const { uid, name, type, thumbUrl, status, response = {} } = file;
+    const { uid ,name, type, thumbUrl, status, response = {} } = file;
     const fileItem = {
       uid,
       name,
@@ -48,15 +49,16 @@ function ValueOne(props) {
       status,
       url: BASE_QINIU_URL + (response.hash || "")
     };
+    fileItem.preview = fileItem.url;
     fileList.pop();
     fileList.push(fileItem);
-    setFileList( fileList );
+    setFileList([...fileList]);
   };
 
   const getUploadToken = () => {
     const token = getToken();
     setToken(token);
-  } 
+  }; 
 
   const uploadButton = (
     <div>
@@ -64,6 +66,20 @@ function ValueOne(props) {
       <div className="ant-upload-text">上传</div>
     </div>
   );
+
+  const validate = () => {
+    const validateArray = [
+       'name',
+       'color',
+       'transparent',
+       'pic',
+       'description'
+    ]
+    props.form.validate(validateArray,(err,values)=>{
+       console.log('hhhh');
+    })
+  }
+  console.log(fileList.length);
   return (
     <div className={props.class}>
       <Form layout="horizontal">
