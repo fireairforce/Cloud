@@ -1,8 +1,8 @@
-import React from "react";
+import React, { forwardRef, useImperativeHandle } from "react";
 import styles from "./style/value.module.less";
 import { Form, Input } from "antd";
 import Verity from "utils/regex";
-import './style/value.less';
+import "./style/value.less";
 
 const listData = [
   {
@@ -55,8 +55,9 @@ const listData = [
   }
 ];
 
-function ValueFour(props) {
-  const { getFieldDecorator } = props.form;
+function ValueFour(props, ref) {
+  const { form } = props;
+  const { getFieldDecorator } = form;
   const formItemLayout = {
     labelCol: {
       xs: { span: 24 },
@@ -67,35 +68,53 @@ function ValueFour(props) {
       sm: { span: 16 }
     }
   };
+
+  useImperativeHandle(ref, () => ({
+    form,
+    validate4: () => {
+      const validateArray = [];
+      listData.map(item => {
+        validateArray.push(item.field);
+      });
+      let error = "";
+      let value = {};
+      form.validateFields(validateArray, (err, values) => {
+        error = err;
+        value = values;
+        return [error, value];
+      });
+    }
+  }));
+
   return (
     <div className={props.class}>
       <Form layout="horizontal" {...formItemLayout}>
         <div className={styles.wrapper}>
-            {listData.map(item => {
-              return (
-                <Form.Item label={item.label} key={item.id}>
-                  {getFieldDecorator(item.field, {
-                    rules: [
-                      {
-                        required: false,
-                      },
-                      {
-                        pattern: item.pattern,
-                        message: item.message
-                      }
-                    ]
-                  })(
-                    <div className="inputBanner">
-                      <Input placeholder={item.placeholder} />
-                    </div>
-                  )}
-                </Form.Item>
-              );
-            })}
+          {listData.map(item => {
+            return (
+              <Form.Item label={item.label} key={item.id}>
+                {getFieldDecorator(item.field, {
+                  rules: [
+                    {
+                      required: false
+                    },
+                    {
+                      pattern: item.pattern,
+                      message: item.message
+                    }
+                  ]
+                })(
+                  <div className="inputBanner">
+                    <Input placeholder={item.placeholder} />
+                  </div>
+                )}
+              </Form.Item>
+            );
+          })}
         </div>
       </Form>
     </div>
   );
 }
 
-export default Form.create()(ValueFour);
+export default Form.create()(forwardRef(ValueFour));

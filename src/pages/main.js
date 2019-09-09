@@ -26,6 +26,12 @@ function Main() {
   const [stepIndex, setStepIndex] = useState(0);
   const validateRef0 = useRef(null);
   const validateRef1 = useRef(null);
+  const validateRef2 = useRef(null);
+  const validateRef3 = useRef(null);
+  const validateRef4 = useRef(null);
+  const validateRef5 = useRef(null);
+  const validateRef6 = useRef(null);
+  const validateRef7 = useRef(null);
   const handleBack = () => {
     console.log("回退功能，目前还没开发");
   };
@@ -40,11 +46,11 @@ function Main() {
         console.log(value);
         setStepIndex(c => c + 1);
       } else {
-        console.log("您的信息填写不完成");
+        console.log("您的信息填写不完整");
       }
     } else if (stepIndex === 1) {
-      let [error,value] = validateRef1.current.validate2();
-      if(!error){
+      let [error, value] = validateRef1.current.validate2();
+      if (!error) {
         console.log(value);
         setStepIndex(c => c + 1);
       }
@@ -66,28 +72,72 @@ function Main() {
       <div className={styles.content}>
         <div className={styles.bgc}></div>
         {componentMap.map((FormItem, index) => {
-          return index === 0 ? (
-            <FormItem
-              key={`Value${index}`}
-              class={stepIndex === index ? "" : "hide"}
-              wrappedComponentRef={validateRef0}
-            />
-          ) : index === 1 ? (
-            <>
-              <FormItem
-                key={`Value${index}`}
-                class={stepIndex === index ? "" : "hide"}
-                wrappedComponentRef={validateRef1}
-              />
-            </>
-          ) : (
-            <>
-              <FormItem
-                key={`Value${index}`}
-                class={stepIndex === index ? "" : "hide"}
-              />
-            </>
-          );
+          switch (index) {
+            case 0:
+              return (
+                <FormItem
+                  key={`Value${index}`}
+                  class={stepIndex === index ? "" : "hide"}
+                  wrappedComponentRef={validateRef0}
+                />
+              );
+            case 1:
+              return (
+                <FormItem
+                  key={`Value${index}`}
+                  class={stepIndex === index ? "" : "hide"}
+                  wrappedComponentRef={validateRef1}
+                />
+              );
+            case 2:
+              return (
+                <FormItem
+                  key={`Value${index}`}
+                  class={stepIndex === index ? "" : "hide"}
+                  wrappedComponentRef={validateRef2}
+                />
+              );
+            case 3:
+              return (
+                <FormItem
+                  key={`Value${index}`}
+                  class={stepIndex === index ? "" : "hide"}
+                  wrappedComponentRef={validateRef3}
+                />
+              );
+            case 4:
+              return (
+                <FormItem
+                  key={`Value${index}`}
+                  class={stepIndex === index ? "" : "hide"}
+                  wrappedComponentRef={validateRef4}
+                />
+              );
+            case 5:
+              return (
+                <FormItem
+                  key={`Value${index}`}
+                  class={stepIndex === index ? "" : "hide"}
+                  wrappedComponentRef={validateRef5}
+                />
+              );
+            case 6:
+              return (
+                <FormItem
+                  key={`Value${index}`}
+                  class={stepIndex === index ? "" : "hide"}
+                  wrappedComponentRef={validateRef6}
+                />
+              );
+            case 7:
+              return (
+                <FormItem
+                  key={`Value${index}`}
+                  class={stepIndex === index ? "" : "hide"}
+                  wrappedComponentRef={validateRef7}
+                />
+              );
+          }
         })}
       </div>
       <div className={styles.footer}>

@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, forwardRef, useImperativeHandle } from "react";
 import styles from "./style/value.module.less";
 import { Upload, Form, Icon, Input, Modal } from "antd";
 import { getToken } from "utils/qiniu";
-import './style/value.less';
+import "./style/value.less";
 
 // 七牛默认的上传地址
 const QINIU_SERVER = "http://upload.qiniup.com";
@@ -10,12 +10,13 @@ const QINIU_SERVER = "http://upload.qiniup.com";
 const BASE_QINIU_URL = "http://wdlj.zoomdong.xin/";
 const FormItem = Form.Item;
 
-function ValueSix(props) {
+function ValueSix(props, ref) {
   const [previewVisible, setPreviewVisible] = useState(false);
   const [previewImage, setPreviewImage] = useState("");
   const [token, setToken] = useState("");
   const [fileList, setFileList] = useState([]);
-  const { getFieldDecorator } = props.form;
+  const { form } = props;
+  const { getFieldDecorator } = form;
 
   const formItemLayout = {
     labelCol: {
@@ -63,6 +64,20 @@ function ValueSix(props) {
       <div className="ant-upload-text">上传</div>
     </div>
   );
+
+  useImperativeHandle(ref, () => ({
+    form,
+    validate6: () => {
+      const validateArray = [];
+      let error = "";
+      let value = {};
+      form.validateFields(validateArray, (err, values) => {
+        error = err;
+        value = values;
+        return [error, value];
+      });
+    }
+  }));
 
   return (
     <div className={props.class}>
@@ -160,4 +175,4 @@ function ValueSix(props) {
   );
 }
 
-export default Form.create()(ValueSix);
+export default Form.create()(forwardRef(ValueSix));

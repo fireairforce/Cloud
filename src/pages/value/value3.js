@@ -1,4 +1,4 @@
-import React from "react";
+import React , { forwardRef, useImperativeHandle } from "react";
 import styles from "./style/value.module.less";
 import { Form, Input } from "antd";
 import Verity from "utils/regex";
@@ -55,8 +55,9 @@ const listData = [
   }
 ];
 
-function ValueThree(props) {
-  const { getFieldDecorator } = props.form;
+function ValueThree(props,ref) {
+  const { form } = props;
+  const { getFieldDecorator } = form;
   const formItemLayout = {
     labelCol: {
       xs: { span: 24 },
@@ -67,6 +68,24 @@ function ValueThree(props) {
       sm: { span: 16 }
     }
   };
+
+  useImperativeHandle(ref, () => ({
+    form,
+    validate3: () => {
+      const validateArray = [];
+      listData.map(item => {
+        validateArray.push(item.field);
+      });
+      let error = "";
+      let value = {};
+      form.validateFields(validateArray, (err, values) => {
+        error = err;
+        value = values;
+        return [error, value];
+      });
+    }
+  }));
+
   return (
     <div className={props.class}>
       <Form layout="horizontal" {...formItemLayout}>
@@ -95,4 +114,4 @@ function ValueThree(props) {
   );
 }
 
-export default Form.create()(ValueThree);
+export default Form.create()(forwardRef(ValueThree));
