@@ -1,4 +1,4 @@
-import React, {  useState, useImperativeHandle,forwardRef } from "react";
+import React, { useState, useImperativeHandle,forwardRef } from "react";
 import { Form, Input, Select, Upload, Icon, Modal } from "antd";
 import styles from "./style/value.module.less";
 import { getToken } from "utils/qiniu";
@@ -17,7 +17,8 @@ function ValueOne(props,ref) {
   const [previewImage, setPreviewImage] = useState("");
   const [token, setToken] = useState("");
   const [fileList, setFileList] = useState([]);
-  const { getFieldDecorator } = props.form;
+  const { form } = props;
+  const { getFieldDecorator } = form;
   const formItemLayout = {
     labelCol: {
       xs: { span: 24 },
@@ -65,14 +66,7 @@ function ValueOne(props,ref) {
     </div>
   );
 
-  useImperativeHandle(ref,()=>({
-    test:()=>{
-      validate()
-    }
-  }));
-
   const validate = () => {
-    const { form } = props;
     form.setFieldsValue({
       pic:fileList[0].url
     })
@@ -89,7 +83,14 @@ function ValueOne(props,ref) {
       }
     })
   }
-  console.log(props.ref);
+
+  useImperativeHandle(ref,()=>({
+    form,
+    validate1:()=>{
+      validate()
+    },
+  }));
+
   return (
     <div className={props.class}>
       <Form layout="horizontal">

@@ -1,8 +1,8 @@
-import React  from 'react';
+import React, { forwardRef, useImperativeHandle } from "react";
 import styles from "./style/value.module.less";
-import { Form, Input } from 'antd';
-import Verity from 'utils/regex';
-import './style/value.less';
+import { Form, Input } from "antd";
+import Verity from "utils/regex";
+import "./style/value.less";
 
 const listData = [
   {
@@ -47,7 +47,8 @@ const listData = [
   }
 ];
 
-function ValueTwo(props){
+function ValueTwo(props, ref) {
+  const { form } = props;
   const { getFieldDecorator } = props.form;
   const formItemLayout = {
     labelCol: {
@@ -59,36 +60,56 @@ function ValueTwo(props){
       sm: { span: 16 }
     }
   };
-  return(
-     <div className={props.class}>
-       <Form layout="horizontal" {...formItemLayout}>
-         <div className={styles.wrapper}>
-              {listData.map(item => {
-                return (
-                  <Form.Item label={item.label} key={item.id}>
-                    {getFieldDecorator(item.field, {
-                      rules: [
-                        {
-                          required: true,
-                          message: "Please input your name"
-                        },
-                        {
-                          pattern: item.pattern,
-                          message: item.message
-                        }
-                      ]
-                    })(
-                      <div className="inputBanner">
-                        <Input placeholder={item.placeholder} />
-                      </div>
-                    )}
-                  </Form.Item>
-                );
-              })}
-         </div>
-       </Form>
-     </div>
-  )
+
+  const validate = () => {
+    const validateArray = [];
+    listData.map(item => {
+      validateArray.push(item.field);
+    });
+    form.validate(validateArray, (err, values) => {
+      if (!err) {
+        console.log(values);
+      }
+    });
+  };
+
+  useImperativeHandle(ref,()=>({
+    form,
+    validate2:()=>{
+      validate()
+    }
+  }))
+
+  return (
+    <div className={props.class}>
+      <Form layout="horizontal" {...formItemLayout}>
+        <div className={styles.wrapper}>
+          {listData.map(item => {
+            return (
+              <Form.Item label={item.label} key={item.id}>
+                {getFieldDecorator(item.field, {
+                  rules: [
+                    {
+                      required: true,
+                      message: "Please input your name"
+                    },
+                    {
+                      pattern: item.pattern,
+                      message: item.message
+                    }
+                  ]
+                })(
+                  <div className="inputBanner">
+                    <Input placeholder={item.placeholder} />
+                  </div>
+                )}
+              </Form.Item>
+            );
+          })}
+        </div>
+      </Form>
+    </div>
+  );
 }
 
-export default Form.create()(ValueTwo);
+export default Form.create()(forwardRef(ValueTwo));

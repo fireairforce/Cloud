@@ -24,20 +24,22 @@ const componentMap = [
 
 function Main() {
   const [stepIndex, setStepIndex] = useState(0);
-  let validateRef = useRef(null);
+  const validateRef0 = useRef(null);
+  const validateRef1 = useRef(null);
   const handleBack = () => {
-    console.log("test");
+    console.log("回退功能，目前还没开发");
   };
-  useEffect(()=>{
-    console.log(validateRef);
-  })
+
+  useEffect(() => {
+    console.log(validateRef0);
+    console.log(validateRef1);
+  });
   const goNext = () => {
-    console.log(validateRef.current.test());
-    setStepIndex(c=>c+1);
-  }
+    setStepIndex(c => c + 1);
+  };
   const goPrev = () => {
-    setStepIndex(c=>c-1);
-  }
+    setStepIndex(c => c - 1);
+  };
   return (
     <Fragment>
       <div className={styles.header}>
@@ -48,18 +50,37 @@ function Main() {
       </div>
       <div className={styles.content}>
         <div className={styles.bgc}></div>
-        {componentMap.map((FormItem, index) => (
-          <FormItem
-            key={`Value${index}`}
-            class={stepIndex===index?'':'hide'}
-            onRef={onRef}
-          />
-        ))}
+        {componentMap.map((FormItem, index) => {
+          return index === 0 ? (
+            <FormItem
+              key={`Value${index}`}
+              class={stepIndex === index ? "" : "hide"}
+              wrappedComponentRef={validateRef0}
+            />
+          ) : index === 1 ? (
+            <>
+              <FormItem
+                key={`Value${index}`}
+                class={stepIndex === index ? "" : "hide"}
+                wrappedComponentRef={validateRef1}
+              />
+            </>
+          ) : (
+            <>
+              <FormItem
+                key={`Value${index}`}
+                class={stepIndex === index ? "" : "hide"}
+              />
+            </>
+          );
+        })}
       </div>
       <div className={styles.footer}>
         {stepIndex === 0 ? (
           <div className={styles.first}>
-            <Button type="primary" onClick={goNext}>下一步</Button>
+            <Button type="primary" onClick={goNext}>
+              下一步
+            </Button>
           </div>
         ) : stepIndex !== 6 ? (
           <div className={styles.middle}>
