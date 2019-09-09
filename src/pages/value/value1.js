@@ -67,9 +67,11 @@ function ValueOne(props,ref) {
   );
 
   const validate = () => {
-    form.setFieldsValue({
-      pic:fileList[0].url
-    })
+    // form.setFieldsValue({
+    //   pic:fileList[0].url
+    // })
+    let error = '';
+    let value = {};
     const validateArray = [
        'name',
        'color',
@@ -77,10 +79,18 @@ function ValueOne(props,ref) {
        'pic',
        'description'
     ]
-    form.validate(validateArray,(err,values)=>{
-      if(!err){
-        console.log(values);
+    form.validateFields(validateArray,(err,values)=>{
+      error = err;
+      value = values;
+      if(fileList.length!==0){
+        value.pic = [];
+        fileList.map(item=>{
+          value.pic.push(item.url);
+        })
       }
+      // console.log(error);
+      // console.log(value);
+      return [error,value];
     })
   }
 
@@ -140,7 +150,7 @@ function ValueOne(props,ref) {
               {getFieldDecorator("pic", {
                 rules: [
                   {
-                    required: true,
+                    required: false,
                     message: "请上传宝石照片"
                   }
                 ]

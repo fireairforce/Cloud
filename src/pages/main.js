@@ -31,11 +31,22 @@ function Main() {
   };
 
   useEffect(() => {
-    console.log(validateRef0);
-    console.log(validateRef1);
+    // console.log(validateRef0);
   });
   const goNext = () => {
-    setStepIndex(c => c + 1);
+    if(stepIndex === 0){
+      // let [error,value] =  validateRef0.current.validate1();
+      // if(!error){
+      //   console.log(value);
+      //   setStepIndex(c => c + 1);
+      // }
+      console.log(validateRef0.current.validate1());
+    } else if(stepIndex === 1) {
+      validateRef1.current.validate2();
+    } else {
+      setStepIndex(c => c + 1);
+    }
+    
   };
   const goPrev = () => {
     setStepIndex(c => c - 1);
