@@ -31,24 +31,26 @@ function Main() {
   };
 
   useEffect(() => {
-    console.log(validateRef0.current);
+    // console.log(validateRef0.current);
   });
   const goNext = () => {
-    if(stepIndex === 0){
-       
-      let [error,value] =  validateRef0.current.validate1();
-      if(!error){
+    if (stepIndex === 0) {
+      let [error, value] = validateRef0.current.validate1();
+      if (!error) {
         console.log(value);
         setStepIndex(c => c + 1);
       } else {
-        console.log('您的信息填写不完成');
+        console.log("您的信息填写不完成");
       }
-    } else if(stepIndex === 1) {
-      validateRef1.current.validate2();
+    } else if (stepIndex === 1) {
+      let [error,value] = validateRef1.current.validate2();
+      if(!error){
+        console.log(value);
+        setStepIndex(c => c + 1);
+      }
     } else {
       setStepIndex(c => c + 1);
     }
-    
   };
   const goPrev = () => {
     setStepIndex(c => c - 1);

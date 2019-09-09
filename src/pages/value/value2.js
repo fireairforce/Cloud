@@ -61,24 +61,22 @@ function ValueTwo(props, ref) {
     }
   };
 
-  const validate = () => {
-    const validateArray = [];
-    listData.map(item => {
-      validateArray.push(item.field);
-    });
-    form.validate(validateArray, (err, values) => {
-      if (!err) {
-        console.log(values);
-      }
-    });
-  };
-
-  useImperativeHandle(ref,()=>({
+  useImperativeHandle(ref, () => ({
     form,
-    validate2:()=>{
-      validate()
+    validate2: () => {
+      const validateArray = [];
+      listData.map(item => {
+        validateArray.push(item.field);
+      });
+      let error = "";
+      let value = {};
+      form.validateFields(validateArray, (err, values) => {
+        error = err;
+        value = values;
+        return [error, value];
+      });
     }
-  }))
+  }));
 
   return (
     <div className={props.class}>
