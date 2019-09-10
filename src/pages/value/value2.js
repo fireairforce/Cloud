@@ -84,7 +84,7 @@ function ValueTwo(props, ref) {
                   rules: [
                     {
                       required: true,
-                      message: "Please input your name"
+                      message: item.message
                     }
                   ]
                 })(

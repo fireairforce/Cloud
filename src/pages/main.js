@@ -34,13 +34,11 @@ function Main() {
   const validateRef5 = useRef(null);
   const validateRef6 = useRef(null);
   const validateRef7 = useRef(null);
+  
   const handleBack = () => {
     console.log("回退功能，目前还没开发");
   };
-
-  useEffect(() => {
-    // console.log(validateRef0.current);
-  });
+  
   const goNext = () => {
     if (stepIndex === 0) {
       let [error, value] = validateRef0.current.validate1();

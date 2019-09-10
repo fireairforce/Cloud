@@ -81,8 +81,8 @@ function ValueThree(props,ref) {
       form.validateFields(validateArray, (err, values) => {
         error = err;
         value = values;
-        return [error, value];
       });
+      return [error, value];
     }
   }));
 
