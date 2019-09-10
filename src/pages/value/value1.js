@@ -49,10 +49,14 @@ function ValueOne(props, ref) {
       status,
       url: BASE_QINIU_URL + (response.hash || "")
     };
-    fileItem.preview = fileItem.url;
-    fileList.pop();
-    fileList.push(fileItem);
-    setFileList([...fileList]);
+      fileItem.preview = fileItem.url;
+      fileList.pop();
+      fileList.push(fileItem);
+      if(fileItem.status === 'removed'){
+        fileList.pop();
+      }
+      setFileList([...fileList]);
+   
   };
   const getUploadToken = () => {
     const token = getToken();
@@ -92,11 +96,10 @@ function ValueOne(props, ref) {
       });
 
       return [error, value];
-    },
-    test: () => {
-      return "wdlj";
     }
   }));
+
+  // console.log(fileList);
 
   return (
     <div className={props.class}>

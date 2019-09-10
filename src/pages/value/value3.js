@@ -73,9 +73,9 @@ function ValueThree(props,ref) {
     form,
     validate3: () => {
       const validateArray = [];
-      listData.map(item => {
-        validateArray.push(item.field);
-      });
+      listData.map(item => (
+        validateArray.push(item.field)
+      ));
       let error = "";
       let value = {};
       form.validateFields(validateArray, (err, values) => {
