@@ -94,7 +94,6 @@ function ValueOne(props, ref) {
           });
         }
       });
-
       return [error, value];
     }
   }));

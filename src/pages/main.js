@@ -22,6 +22,8 @@ const componentMap = [
   ValueSeven
 ];
 
+const ValueContent = [];
+
 function Main() {
   const [stepIndex, setStepIndex] = useState(0);
   const validateRef0 = useRef(null);
@@ -43,19 +45,52 @@ function Main() {
     if (stepIndex === 0) {
       let [error, value] = validateRef0.current.validate1();
       if (!error) {
-        console.log(value);
+        value.type = 1;
+        ValueContent.push(value);
         setStepIndex(c => c + 1);
-      } else {
-        console.log("您的信息填写不完整");
       }
     } else if (stepIndex === 1) {
-      let [error, value] = validateRef1.current.validate2();
-      if (!error) {
-        console.log(value);
+      let [err, values] = validateRef1.current.validate2();
+      if (!err) {
+        values.type = 2;
+        ValueContent.push(values);
         setStepIndex(c => c + 1);
       }
-    } else {
-      setStepIndex(c => c + 1);
+    } else if (stepIndex === 2) {
+      let [err, values] = validateRef2.current.validate3();
+      if (!err) {
+        values.type = 3;
+        ValueContent.push(values);
+        setStepIndex(c => c + 1);
+      }
+    } else if (stepIndex === 3) {
+      let [err, values] = validateRef3.current.validate4();
+      if (!err) {
+        values.type = 4;
+        ValueContent.push(values);
+        setStepIndex(c => c + 1);
+      }
+    } else if (stepIndex === 4) {
+      let [err, values] = validateRef4.current.validate5();
+      if (!err) {
+        values.type = 5;
+        ValueContent.push(values);
+        setStepIndex(c => c + 1);
+      }
+    } else if (stepIndex === 5) {
+      let [err, values] = validateRef5.current.validate6();
+      if (!err) {
+        values.type = 6;
+        ValueContent.push(values);
+        setStepIndex(c => c + 1);
+      }
+    } else if (stepIndex === 6) {
+      let [err, values] = validateRef6.current.validate7();
+      if (!err) {
+        values.type = 7;
+        ValueContent.push(values);
+        setStepIndex(c => c + 1);
+      }
     }
   };
   const goPrev = () => {
@@ -79,6 +114,7 @@ function Main() {
                   key={`Value${index}`}
                   class={stepIndex === index ? "" : "hide"}
                   wrappedComponentRef={validateRef0}
+                  stepIndex={stepIndex === index ? index + 1 : ""}
                 />
               );
             case 1:
@@ -87,6 +123,7 @@ function Main() {
                   key={`Value${index}`}
                   class={stepIndex === index ? "" : "hide"}
                   wrappedComponentRef={validateRef1}
+                  stepIndex={stepIndex === index ? index + 1 : ""}
                 />
               );
             case 2:
@@ -95,6 +132,7 @@ function Main() {
                   key={`Value${index}`}
                   class={stepIndex === index ? "" : "hide"}
                   wrappedComponentRef={validateRef2}
+                  stepIndex={stepIndex === index ? index + 1 : ""}
                 />
               );
             case 3:
@@ -103,6 +141,7 @@ function Main() {
                   key={`Value${index}`}
                   class={stepIndex === index ? "" : "hide"}
                   wrappedComponentRef={validateRef3}
+                  stepIndex={stepIndex === index ? index + 1 : ""}
                 />
               );
             case 4:
@@ -111,6 +150,7 @@ function Main() {
                   key={`Value${index}`}
                   class={stepIndex === index ? "" : "hide"}
                   wrappedComponentRef={validateRef4}
+                  stepIndex={stepIndex === index ? index + 1 : ""}
                 />
               );
             case 5:
@@ -119,6 +159,7 @@ function Main() {
                   key={`Value${index}`}
                   class={stepIndex === index ? "" : "hide"}
                   wrappedComponentRef={validateRef5}
+                  stepIndex={stepIndex === index ? index + 1 : ""}
                 />
               );
             case 6:
@@ -127,6 +168,7 @@ function Main() {
                   key={`Value${index}`}
                   class={stepIndex === index ? "" : "hide"}
                   wrappedComponentRef={validateRef6}
+                  stepIndex={stepIndex === index ? index + 1 : ""}
                 />
               );
             case 7:
@@ -135,6 +177,7 @@ function Main() {
                   key={`Value${index}`}
                   class={stepIndex === index ? "" : "hide"}
                   wrappedComponentRef={validateRef7}
+                  stepIndex={stepIndex === index ? index + 1 : ""}
                 />
               );
           }
