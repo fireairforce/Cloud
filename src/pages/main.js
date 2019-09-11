@@ -105,80 +105,14 @@ function Main() {
       <div className={styles.content}>
         <div className={styles.bgc}></div>
         {componentMap.map((FormItem, index) => {
-          switch (index) {
-            case 0:
-              return (
-                <FormItem
+          return(
+            <FormItem
                   key={`Value${index}`}
                   class={stepIndex === index ? "" : "hide"}
-                  wrappedComponentRef={validateRef0}
+                  wrappedComponentRef={eval(`validateRef${index}`)}
                   stepIndex={stepIndex === index ? index + 1 : ""}
                 />
-              );
-            case 1:
-              return (
-                <FormItem
-                  key={`Value${index}`}
-                  class={stepIndex === index ? "" : "hide"}
-                  wrappedComponentRef={validateRef1}
-                  stepIndex={stepIndex === index ? index + 1 : ""}
-                />
-              );
-            case 2:
-              return (
-                <FormItem
-                  key={`Value${index}`}
-                  class={stepIndex === index ? "" : "hide"}
-                  wrappedComponentRef={validateRef2}
-                  stepIndex={stepIndex === index ? index + 1 : ""}
-                />
-              );
-            case 3:
-              return (
-                <FormItem
-                  key={`Value${index}`}
-                  class={stepIndex === index ? "" : "hide"}
-                  wrappedComponentRef={validateRef3}
-                  stepIndex={stepIndex === index ? index + 1 : ""}
-                />
-              );
-            case 4:
-              return (
-                <FormItem
-                  key={`Value${index}`}
-                  class={stepIndex === index ? "" : "hide"}
-                  wrappedComponentRef={validateRef4}
-                  stepIndex={stepIndex === index ? index + 1 : ""}
-                />
-              );
-            case 5:
-              return (
-                <FormItem
-                  key={`Value${index}`}
-                  class={stepIndex === index ? "" : "hide"}
-                  wrappedComponentRef={validateRef5}
-                  stepIndex={stepIndex === index ? index + 1 : ""}
-                />
-              );
-            case 6:
-              return (
-                <FormItem
-                  key={`Value${index}`}
-                  class={stepIndex === index ? "" : "hide"}
-                  wrappedComponentRef={validateRef6}
-                  stepIndex={stepIndex === index ? index + 1 : ""}
-                />
-              );
-            case 7:
-              return (
-                <FormItem
-                  key={`Value${index}`}
-                  class={stepIndex === index ? "" : "hide"}
-                  wrappedComponentRef={validateRef7}
-                  stepIndex={stepIndex === index ? index + 1 : ""}
-                />
-              );
-          }
+          )
         })}
       </div>
       <div className={styles.footer}>
