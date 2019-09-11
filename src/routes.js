@@ -26,7 +26,8 @@ export default [
     name: '首页',
     icon: 'home',
     path: '/',
-    component: Home
+    component: Home,
+    key: 0
   }
 ]
 

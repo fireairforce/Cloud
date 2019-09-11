@@ -22,17 +22,78 @@ const componentMap = [
   ValueSeven
 ];
 
+const ValueContent = [];
+
 function Main() {
-  const handleBack = () => {
-    console.log("test");
-  };
   const [stepIndex, setStepIndex] = useState(0);
+  const validateRef0 = useRef(null);
+  const validateRef1 = useRef(null);
+  const validateRef2 = useRef(null);
+  const validateRef3 = useRef(null);
+  const validateRef4 = useRef(null);
+  const validateRef5 = useRef(null);
+  const validateRef6 = useRef(null);
+  const validateRef7 = useRef(null);
+  
+  const handleBack = () => {
+    console.log("回退功能，目前还没开发");
+  };
+  
   const goNext = () => {
-    setStepIndex(c=>c+1);
-  }
+    if (stepIndex === 0) {
+      let [error, value] = validateRef0.current.validate1();
+      if (!error) {
+        value.type = 1;
+        ValueContent.push(value);
+        setStepIndex(c => c + 1);
+      }
+    } else if (stepIndex === 1) {
+      let [err, values] = validateRef1.current.validate2();
+      if (!err) {
+        values.type = 2;
+        ValueContent.push(values);
+        setStepIndex(c => c + 1);
+      }
+    } else if (stepIndex === 2) {
+      let [err, values] = validateRef2.current.validate3();
+      if (!err) {
+        values.type = 3;
+        ValueContent.push(values);
+        setStepIndex(c => c + 1);
+      }
+    } else if (stepIndex === 3) {
+      let [err, values] = validateRef3.current.validate4();
+      if (!err) {
+        values.type = 4;
+        ValueContent.push(values);
+        setStepIndex(c => c + 1);
+      }
+    } else if (stepIndex === 4) {
+      let [err, values] = validateRef4.current.validate5();
+      if (!err) {
+        values.type = 5;
+        ValueContent.push(values);
+        setStepIndex(c => c + 1);
+      }
+    } else if (stepIndex === 5) {
+      let [err, values] = validateRef5.current.validate6();
+      if (!err) {
+        values.type = 6;
+        ValueContent.push(values);
+        setStepIndex(c => c + 1);
+      }
+    } else if (stepIndex === 6) {
+      let [err, values] = validateRef6.current.validate7();
+      if (!err) {
+        values.type = 7;
+        ValueContent.push(values);
+        setStepIndex(c => c + 1);
+      }
+    }
+  };
   const goPrev = () => {
-    setStepIndex(c=>c-1);
-  }
+    setStepIndex(c => c - 1);
+  };
   return (
     <Fragment>
       <div className={styles.header}>
@@ -43,17 +104,23 @@ function Main() {
       </div>
       <div className={styles.content}>
         <div className={styles.bgc}></div>
-        {componentMap.map((FormItem, index) => (
-          <FormItem
-            key={`Value${index}`}
-            class={stepIndex===index?'':'hide'}
-          />
-        ))}
+        {componentMap.map((FormItem, index) => {
+          return(
+            <FormItem
+                  key={`Value${index}`}
+                  class={stepIndex === index ? "" : "hide"}
+                  wrappedComponentRef={eval(`validateRef${index}`)}
+                  stepIndex={stepIndex === index ? index + 1 : ""}
+                />
+          )
+        })}
       </div>
       <div className={styles.footer}>
         {stepIndex === 0 ? (
           <div className={styles.first}>
-            <Button type="primary" onClick={goNext}>下一步</Button>
+            <Button type="primary" onClick={goNext}>
+              下一步
+            </Button>
           </div>
         ) : stepIndex !== 6 ? (
           <div className={styles.middle}>
@@ -75,7 +142,6 @@ function Main() {
           </div>
         )}
       </div>
-      <div className={styles.bgcB}></div>
     </Fragment>
   );
 }
