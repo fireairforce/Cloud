@@ -72,7 +72,7 @@ function ValueTwo(props, ref) {
       return [error, value];
     }
   }));
-
+console.log(`bar${props.stepIndex}`);
   return (
     <div className={props.class}>
       <Form layout="horizontal" {...formItemLayout}>
@@ -95,6 +95,7 @@ function ValueTwo(props, ref) {
               </Form.Item>
             );
           })}
+          <div className={styles.bar2}></div>
         </div>
       </Form>
     </div>

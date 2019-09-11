@@ -10,7 +10,6 @@ const listData = [
     label: "品种",
     placeholder: "请选择品种",
     field: "Variety",
-    pattern: Verity.chinese,
     message: "您的输入不符合规范"
   },
   {
@@ -18,7 +17,6 @@ const listData = [
     label: "术语与定义",
     placeholder: "例：钻石完全是由碳结晶而成的矿物",
     field: "TerminologyDefinition",
-    pattern: Verity.chinese,
     message: "您的输入不符合规范"
   },
   {
@@ -26,7 +24,6 @@ const listData = [
     label: "年代产地",
     placeholder: "例：1999年，南非",
     field: "ChronologicalOrigin",
-    pattern: Verity.chinese,
     message: "您的输入不符合规范"
   },
   {
@@ -34,7 +31,6 @@ const listData = [
     label: "光泽",
     placeholder: "例：金刚光色",
     field: "Gloss",
-    pattern: Verity.chinese,
     message: "您的输入不符合规范"
   },
   {
@@ -42,7 +38,6 @@ const listData = [
     label: "光线特征",
     placeholder: "例：非均质集合体",
     field: "LightCharacteristics",
-    pattern: Verity.number,
     message: "您的输入不符合规范"
   },
   {
@@ -50,7 +45,6 @@ const listData = [
     label: "荧光观察",
     placeholder: "例：x光射线下天河石-很弱的绿色",
     field: "FluorescenceObservation",
-    pattern: Verity.chinese,
     message: "您的输入不符合规范"
   }
 ];
@@ -96,7 +90,6 @@ function ValueThree(props,ref) {
                   {getFieldDecorator(item.field, {
                     rules: [
                       {
-                        pattern: item.pattern,
                         message: item.message
                       }
                     ]
@@ -108,6 +101,7 @@ function ValueThree(props,ref) {
                 </Form.Item>
               );
             })}
+          <div className={styles.bar3}></div>
         </div>
       </Form>
     </div>

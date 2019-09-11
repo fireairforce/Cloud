@@ -115,6 +115,7 @@ function Main() {
           )
         })}
       </div>
+
       <div className={styles.footer}>
         {stepIndex === 0 ? (
           <div className={styles.first}>
@@ -127,7 +128,7 @@ function Main() {
             <Button type="primary" className={styles.btn1} onClick={goPrev}>
               上一步
             </Button>
-            <Button type="primary" className={styles.btn2} onClick={goNext}>
+            <Button type="primary" onClick={goNext}>
               下一步
             </Button>
           </div>
@@ -136,7 +137,7 @@ function Main() {
             <Button type="primary" className={styles.btn1} onClick={goPrev}>
               上一步
             </Button>
-            <Button type="primary" className={styles.btn2}>
+            <Button type="primary">
               开始估值
             </Button>
           </div>

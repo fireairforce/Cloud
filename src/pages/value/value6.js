@@ -166,6 +166,7 @@ function ValueSix(props, ref) {
               ]
             })(<Input placeholder="请填写第三方估值" />)}
           </FormItem>
+          <div className={styles.bar6}></div>
         </div>
         <Modal visible={previewVisible} footer={null} onCancel={handleCancel}>
           <img style={{ width: "100%" }} src={previewImage} alt="previewImg" />
