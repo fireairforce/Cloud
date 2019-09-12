@@ -33,7 +33,6 @@ function Main() {
   const validateRef4 = useRef(null);
   const validateRef5 = useRef(null);
   const validateRef6 = useRef(null);
-  const validateRef7 = useRef(null);
   
   const handleBack = () => {
     console.log("回退功能，目前还没开发");
