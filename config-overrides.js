@@ -4,6 +4,7 @@ const {
   fixBabelImports,
   addLessLoader,
   addWebpackAlias,
+  addPostcssPlugins,
   addDecoratorsLegacy,
   removeModuleScopePlugin
 } = require("customize-cra");
@@ -27,5 +28,22 @@ module.exports = override(
   // 其实这个并不是很需要
   addDecoratorsLegacy(),
   // 解决了一个create-react-app引入bug
-  removeModuleScopePlugin()
+  removeModuleScopePlugin(),
+  addPostcssPlugins([require("postcss-px-to-viewport")
+  ({
+    unitToConvert: 'px',
+    viewportWidth: 1080,
+    unitPrecision: 5,
+    propList: ['*'],
+    viewportUnit: 'vw',
+    fontViewportUnit: 'vw',
+    selectorBlackList: ['ant'],
+    minPixelValue: 1,
+    mediaQuery: false,
+    replace: true,
+    exclude: [],
+    landscape: false,
+    landscapeUnit: 'vw',
+    landscapeWidth: 568
+  })])
 );

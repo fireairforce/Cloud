@@ -12,7 +12,9 @@ const FormItem = Form.Item;
 const Option = Select.Option;
 const { TextArea } = Input;
 
+
 function ValueOne(props, ref) {
+  console.log('props',props.stepIndex);
   const [previewVisible, setPreviewVisible] = useState(false);
   const [previewImage, setPreviewImage] = useState("");
   const [token, setToken] = useState("");
@@ -192,11 +194,14 @@ function ValueOne(props, ref) {
               />
             )}
           </FormItem>
+          <div className={styles.bar1}>
+          </div>
         </div>
         <Modal visible={previewVisible} footer={null} onCancel={handleCancel}>
           <img style={{ width: "100%" }} src={previewImage} alt="previewImg" />
         </Modal>
       </Form>
+
     </div>
   );
 }

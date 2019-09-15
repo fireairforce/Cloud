@@ -1,10 +1,11 @@
 .wrapper {
-  width: 92%;
-  height: auto;
+  position: relative;
+  top: 47px;
+  width: 1032px;
   background: #fff;
   margin: 0 auto;
   border: 1px solid rgba(140, 149, 234, 0.3);
-  border-radius: 5px;
+  border-radius: 20px;
   padding: 20px;
   .value1Content {
     display: block;
@@ -15,6 +16,44 @@
   }
   .value1desc {
     margin-top: -10px;
+  }
+
+  @barTest: {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    opacity: 0.75;
+    background-image: linear-gradient(270deg, #AF8CEA 3%, #988FF1 41%, #6E96FC 73%, #6E96FC 97%);
+    border-radius: 0 100px 100px 100px;
+    height: 17px;
+  };
+  .bar1 {
+    @barTest();
+    width: 120px;
+  }
+  .bar2 {
+    @barTest();
+    width: 2*120px;
+  }
+  .bar3 {
+    @barTest();
+    width: 3*120px;
+  }
+  .bar4 {
+    @barTest();
+    width: 4*120px;
+  }
+  .bar5 {
+    @barTest();
+    width: 5*120px;
+  }
+  .bar6 {
+    @barTest();
+    width: 6*120px;
+  }
+  .bar7 {
+    @barTest();
+    width: 100%;
   }
 }
 

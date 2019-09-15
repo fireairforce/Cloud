@@ -189,6 +189,7 @@ function ValueSeven(props, ref) {
               ]
             })(<Input placeholder="请描述宝石的获奖情况" />)}
           </FormItem>
+          <div className={styles.bar7}></div>
         </div>
         <Modal visible={previewVisible} footer={null} onCancel={handleCancel}>
           <img style={{ width: "100%" }} src={previewImage} alt="previewImg" />
