@@ -20,3 +20,5 @@ import styles from 'index.module.less';
 当`antd`的`Form.create()`和`hooks`里面的`forwardRef()`同时作用在函数组件上面的时候，`forwardRef()`传递给从子组件传递到父组件的方法拿不到。(已解决，后续对代码优化一下)
 
 目前考虑的的问题应该是线上部署的问题(首先要做的分开开发环境和生产环境，然后在生产环境里面配置一下相对应的`plugin`应该就可以完成上线).
+
+但是目前发现一个问题`cra`这个库里面并不支持`webpack`的`publicPath`这个配置，因此上线的文件并不会自带`path`，可能需要自己弄一下。

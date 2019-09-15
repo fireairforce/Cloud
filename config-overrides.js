@@ -11,7 +11,7 @@ const {
 // const QiniuWebpackPlugin = require('qiniu-webpack-plugin');
 
 const { resolve } = require("path");
-// const ENV = process.env.NODE_ENV;
+const ENV = process.env.NODE_ENV;
 const { Qiniu } = require('./pushConfig');
 // const QiNiuPlugin = new QiniuWebpackPlugin({Qiniu});
 // 关闭sourcemap
