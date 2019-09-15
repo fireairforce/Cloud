@@ -8,8 +8,12 @@ const {
   removeModuleScopePlugin,
   addWebpackPlugin
 } = require("customize-cra");
+// const QiniuWebpackPlugin = require('qiniu-webpack-plugin');
+
 const { resolve } = require("path");
-const env = process.env.NODE_ENV;
+// const ENV = process.env.NODE_ENV;
+const { Qiniu } = require('./pushConfig');
+// const QiNiuPlugin = new QiniuWebpackPlugin({Qiniu});
 // 关闭sourcemap
 process.env.GENERATE_SOURCEMAP = "false";
 
@@ -32,5 +36,4 @@ module.exports = override(
   addDecoratorsLegacy(),
   // 解决了一个create-react-app引入bug
   removeModuleScopePlugin(),
-  // env === 'production' && addWebpackPlugin()
 );
