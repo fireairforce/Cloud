@@ -5,9 +5,13 @@ const {
   addLessLoader,
   addWebpackAlias,
   addDecoratorsLegacy,
-  removeModuleScopePlugin
+  removeModuleScopePlugin,
+  addWebpackPlugin
 } = require("customize-cra");
 const { resolve } = require("path");
+const env = process.env.NODE_ENV;
+// 关闭sourcemap
+process.env.GENERATE_SOURCEMAP = "false";
 
 module.exports = override(
   fixBabelImports("import", {
@@ -27,5 +31,6 @@ module.exports = override(
   // 其实这个并不是很需要
   addDecoratorsLegacy(),
   // 解决了一个create-react-app引入bug
-  removeModuleScopePlugin()
+  removeModuleScopePlugin(),
+  // env === 'production' && addWebpackPlugin()
 );
