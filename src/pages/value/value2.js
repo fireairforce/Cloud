@@ -1,7 +1,6 @@
 import React, { forwardRef, useImperativeHandle } from "react";
 import styles from "./style/value.module.less";
 import { Form, Input } from "antd";
-import Verity from "utils/regex";
 import "./style/value.less";
 
 const listData = [
@@ -10,35 +9,35 @@ const listData = [
     label: "质量",
     placeholder: "例：约 5（克）",
     field: "mass",
-    message: "您的输入不符合规范"
+    message: "请填写宝石的质量"
   },
   {
     id: 2,
     label: "长",
     placeholder: "例：约 5（mm）",
     field: "long",
-    message: "您的输入不符合规范"
+    message: "请填写宝石的长"
   },
   {
     id: 3,
     label: "宽",
     placeholder: "例：约 5（mm）",
     field: "width",
-    message: "您的输入不符合规范"
+    message: "请填写宝石的宽"
   },
   {
     id: 4,
     label: "高",
     placeholder: "例：约 5（mm）",
     field: "height",
-    message: "您的输入不符合规范"
+    message: "请填写宝石的高"
   },
   {
     id: 5,
     label: "雕刻",
     placeholder: "请填写雕刻详情",
     field: "carve",
-    message: "您的输入不符合规范"
+    message: "请填写宝石的雕刻详情"
   }
 ];
 
