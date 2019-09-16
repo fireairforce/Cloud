@@ -39,6 +39,7 @@
     "less-loader": "^5.0.0",
     "lodash": "^4.17.15",
     "qiniu-webpack-plugin": "^0.4.2",
+    "qn-webpack": "^2.0.3",
     "react-app-rewired": "^2.1.3"
   }
 }

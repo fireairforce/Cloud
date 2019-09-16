@@ -6,14 +6,16 @@ const {
   addWebpackAlias,
   addDecoratorsLegacy,
   removeModuleScopePlugin,
-  addWebpackPlugin
+  addWebpackPlugin,
+  setWebpackPublicPath
 } = require("customize-cra");
-const QiniuWebpackPlugin = require('qiniu-webpack-plugin');
+const QiniuPlugin = require('qn-webpack');
 
 const { resolve } = require("path");
 const ENV = process.env.NODE_ENV;
-const { Qiniu } = require('./pushConfig');
-const QiNiuPlugin = new QiniuWebpackPlugin(Qiniu);
+
+const { qn } = require('./pushConfig');
+const qiniuPlugin = new QiniuPlugin(qn);
 // 关闭sourcemap
 process.env.GENERATE_SOURCEMAP = "false";
 
@@ -36,5 +38,6 @@ module.exports = override(
   addDecoratorsLegacy(),
   // 解决了一个create-react-app引入bug
   removeModuleScopePlugin(),
-  ENV==='production'&& addWebpackPlugin(QiNiuPlugin) 
-);
+  ENV==='production' && setWebpackPublicPath('http://wdlj.zoodmong.xin/'),
+  ENV==='production' && addWebpackPlugin(qiniuPlugin), 
+  );
