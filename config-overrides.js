@@ -38,6 +38,6 @@ module.exports = override(
   addDecoratorsLegacy(),
   // 解决了一个create-react-app引入bug
   removeModuleScopePlugin(),
-  ENV==='production' && setWebpackPublicPath('http://wdlj.zoodmong.xin/'),
+  // ENV==='production' && setWebpackPublicPath('http://wdlj.zoodmong.xin/'),
   ENV==='production' && addWebpackPlugin(qiniuPlugin), 
   );
