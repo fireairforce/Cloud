@@ -57,5 +57,5 @@ module.exports = override(
     })
   ]),
   // ENV==='production' && setWebpackPublicPath('/'),
-  ENV === "production" && addWebpackPlugin(qiniuPlugin)
+  // ENV === "production" && addWebpackPlugin(qiniuPlugin)
 );
