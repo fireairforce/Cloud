@@ -16,12 +16,6 @@ module.exports = {
       }
     ]
   },
-  Qiniu: {
-    ACCESS_KEY: "hXqlX1gyAC9EhwXhmldXDbnN51fV7zDCkDBezSmc",
-    SECRET_KEY: "XQk_zdHSre92uJUl5eFqtfonBZZgzq0jnVX13rvS",
-    bucket: "zoomdong",
-    path: ""
-  },
   qn: {
     accessKey: "hXqlX1gyAC9EhwXhmldXDbnN51fV7zDCkDBezSmc",
     secretKey: "XQk_zdHSre92uJUl5eFqtfonBZZgzq0jnVX13rvS",

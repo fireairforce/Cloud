@@ -11,7 +11,6 @@ const {
   setWebpackPublicPath
 } = require("customize-cra");
 const QiniuPlugin = require("qn-webpack");
-
 const { resolve } = require("path");
 const ENV = process.env.NODE_ENV;
 
@@ -57,6 +56,6 @@ module.exports = override(
       landscapeWidth: 568
     })
   ]),
-  // ENV==='production' && setWebpackPublicPath('http://wdlj.zoodmong.xin/'),
+  // ENV==='production' && setWebpackPublicPath('/'),
   ENV === "production" && addWebpackPlugin(qiniuPlugin)
 );

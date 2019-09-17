@@ -19,6 +19,8 @@
 .env.production.local
 .idea
 
+.qiniu_webpack
+
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
