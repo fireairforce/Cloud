@@ -137,7 +137,7 @@ function ValueOne(props, ref) {
           </FormItem>
 
           <FormItem label="透明度" {...formItemLayout}>
-            {getFieldDecorator("transparent", {
+            {getFieldDecorator("transparency", {
               rules: [
                 {
                   required: true,
@@ -148,7 +148,7 @@ function ValueOne(props, ref) {
           </FormItem>
 
           <FormItem label="上传你要估值宝石的照片" {...formItemLayout}>
-            {getFieldDecorator("pic", {
+            {getFieldDecorator("picture_url", {
               rules: [
                 {
                   required: false,
@@ -180,7 +180,7 @@ function ValueOne(props, ref) {
             {...formItemLayout}
             className={styles.value1desc}
           >
-            {getFieldDecorator("description", {
+            {getFieldDecorator("exterior", {
               rules: [
                 {
                   required: true,

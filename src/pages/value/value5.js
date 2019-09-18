@@ -8,21 +8,21 @@ const listData = [
     id: 1,
     label: "折射率",
     placeholder: "例：1.645～1.690",
-    field: "RefractiveIndex",
+    field: "refraction",
     message: "请填写宝石的折射率"
   },
   {
     id: 2,
     label: "解理",
     placeholder: "例：裂",
-    field: "Cleavage",
+    field: "cleavage",
     message: "请填写宝石的解理情况"
   },
   {
     id: 3,
     label: "光学效应",
     placeholder: "例：炫彩/猫眼",
-    field: "OpticalEffect",
+    field: "special_optical",
     message: "请填写宝石的光学效应"
   },
   {

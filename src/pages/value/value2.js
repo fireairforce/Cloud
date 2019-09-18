@@ -8,14 +8,14 @@ const listData = [
     id: 1,
     label: "质量",
     placeholder: "例：约 5（克）",
-    field: "mass",
+    field: "quality",
     message: "请填写宝石的质量"
   },
   {
     id: 2,
     label: "长",
     placeholder: "例：约 5（mm）",
-    field: "long",
+    field: "length",
     message: "请填写宝石的长"
   },
   {
@@ -36,7 +36,7 @@ const listData = [
     id: 5,
     label: "雕刻",
     placeholder: "请填写雕刻详情",
-    field: "carve",
+    field: "carving",
     message: "请填写宝石的雕刻详情"
   }
 ];
@@ -71,7 +71,6 @@ function ValueTwo(props, ref) {
       return [error, value];
     }
   }));
-console.log(`bar${props.stepIndex}`);
   return (
     <div className={props.class}>
       <Form layout="horizontal" {...formItemLayout}>

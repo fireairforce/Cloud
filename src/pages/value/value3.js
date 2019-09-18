@@ -15,35 +15,35 @@ const listData = [
     id: 2,
     label: "术语与定义",
     placeholder: "例：钻石完全是由碳结晶而成的矿物",
-    field: "TerminologyDefinition",
+    field: "definition",
     message: "请填写宝石的术语与定义"
   },
   {
     id: 3,
     label: "年代产地",
     placeholder: "例：1999年，南非",
-    field: "ChronologicalOrigin",
+    field: "age_place",
     message: "请填写宝石的年代产地"
   },
   {
     id: 4,
     label: "光泽",
     placeholder: "例：金刚光色",
-    field: "Gloss",
+    field: "luster",
     message: "请填写宝石的光泽"
   },
   {
     id: 5,
     label: "光线特征",
     placeholder: "例：非均质集合体",
-    field: "LightCharacteristics",
+    field: "optical",
     message: "请填写宝石的光线特征"
   },
   {
     id: 6,
     label: "荧光观察",
     placeholder: "例：x光射线下天河石-很弱的绿色",
-    field: "FluorescenceObservation",
+    field: "fluorescence",
     message: "请填写宝石的荧光观察情况"
   }
 ];

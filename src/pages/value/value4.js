@@ -8,42 +8,42 @@ const listData = [
     id: 1,
     label: "矿物组成",
     placeholder: "例：含水百分数可变的二氧化硅",
-    field: "MineralComposition",
+    field: "mineral_structure",
     message: "请填写宝石的矿物组成"
   },
   {
     id: 2,
     label: "化学成分",
     placeholder: "例：CaCo3、（Mg，Fe）2SiO4",
-    field: "ChemicalComponents",
+    field: "chemical_structure",
     message: "请填写宝石的化学成分"
   },
   {
     id: 3,
     label: "结晶状态",
     placeholder: "例：晶体、胶体",
-    field: "CrystalState",
+    field: "crystal_system",
     message: "请填写宝石的结晶状态"
   },
   {
     id: 4,
     label: "显微结构",
     placeholder: "例：结构、包裹体、石英、水胆",
-    field: "MicroStructure",
+    field: "microscopic",
     message: "请填写宝石的显微结构"
   },
   {
     id: 5,
     label: "摩式硬度",
     placeholder: "例：5.5-6.5",
-    field: "Hardness",
+    field: "mohs",
     message: "请填写宝石的摩式硬度"
   },
   {
     id: 6,
     label: "密度",
     placeholder: "例：1.99-2.23",
-    field: "Density",
+    field: "density",
     message: "请填写宝石的密度"
   }
 ];

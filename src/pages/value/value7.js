@@ -84,7 +84,7 @@ function ValueSeven(props, ref) {
       <Form layout="horizontal" {...formItemLayout}>
         <div className={styles.wrapper}>
           <FormItem label="您的宝石是否有鉴定报告" {...formItemLayout}>
-            {getFieldDecorator("jdbg", {
+            {getFieldDecorator("cert_report_picture", {
               rules: [
                 {
                   required: true,
@@ -110,7 +110,7 @@ function ValueSeven(props, ref) {
           </FormItem>
 
           <FormItem label="鉴定机构" {...formItemLayout}>
-            {getFieldDecorator("jdjg", {
+            {getFieldDecorator("cert_body", {
               rules: [
                 {
                   required: false
@@ -120,7 +120,7 @@ function ValueSeven(props, ref) {
           </FormItem>
 
           <FormItem label="鉴定时间" {...formItemLayout}>
-            {getFieldDecorator("jdsj", {
+            {getFieldDecorator("cert_date", {
               rules: [
                 {
                   required: false

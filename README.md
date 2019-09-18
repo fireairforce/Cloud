@@ -25,4 +25,74 @@ import styles from 'index.module.less';
 
 ## Now
 目前正在进行请求对接
+- 问题
+Value3页面那里好像接口少个"品种"的字段。
+
+
 以及完成产品的新的原型图
+
+Value1的接口过了
+```
+name 
+color 
+transparency
+picture_url
+exterior
+```
+Value2接口过了
+```
+quality
+length
+width
+height
+carving
+```
+
+Value3接口
+```
+品种  无
+definition
+age_place
+luster
+optical
+fluorescence
+```
+Value4接口
+```
+mineral_structure
+chemical_structure
+结晶状态　无
+microscopic
+mohs
+density
+```
+Value5 接口
+```
+refraction
+cleavage
+special_optical 
+抛光　无
+特殊工艺　无
+制作信息　无
+工时　无
+```
+Value6 接口
+```
+infrared
+法律文件　无
+托管和存放　无
+holder_valuation
+third_valuation
+```
+Value7 接口
+```
+是否有鉴定报告　无
+cert_report_picture
+cert_body
+cert_date
+cert_examiner
+宝石是否获奖　无
+上传品牌文件等　无
+名称寓意　无
+获奖情况　无
+```
