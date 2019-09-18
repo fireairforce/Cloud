@@ -13,7 +13,6 @@ const { TextArea } = Input;
 
 
 function ValueOne(props, ref) {
-  console.log('props',props.stepIndex);
   const [previewVisible, setPreviewVisible] = useState(false);
   const [previewImage, setPreviewImage] = useState("");
   const [token, setToken] = useState("");
