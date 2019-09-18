@@ -1,7 +1,6 @@
 import React , { forwardRef, useImperativeHandle } from "react";
 import styles from "./style/value.module.less";
 import { Form, Input } from "antd";
-import './style/value.less';
 
 const listData = [
   {

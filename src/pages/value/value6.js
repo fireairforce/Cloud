@@ -2,7 +2,6 @@ import React, { useState, forwardRef, useImperativeHandle } from "react";
 import styles from "./style/value.module.less";
 import { Upload, Form, Icon, Input, Modal } from "antd";
 import { getToken } from "utils/qiniu";
-import "./style/value.less";
 
 // 七牛默认的上传地址
 const QINIU_SERVER = "http://upload.qiniup.com";

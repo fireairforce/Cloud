@@ -9,4 +9,6 @@ html, body :global(#root) {
   background-color: transparent;
   font-family: PingFangSC-Regular;
 }
-
+.hide{
+  display: none;
+}

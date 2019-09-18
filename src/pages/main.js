@@ -11,6 +11,7 @@ import ValueSeven from "./value/value7";
 import back from "assets/color.png";
 import { Button } from "antd";
 import styles from "./value/style/main.module.less";
+// import
 
 const componentMap = [
   ValueOne,
@@ -33,11 +34,11 @@ function Main() {
   const validateRef4 = useRef(null);
   const validateRef5 = useRef(null);
   const validateRef6 = useRef(null);
-  
+
   const handleBack = () => {
     console.log("回退功能，目前还没开发");
   };
-  
+
   const goNext = () => {
     if (stepIndex === 0) {
       let [error, value] = validateRef0.current.validate1();
@@ -104,14 +105,14 @@ function Main() {
       <div className={styles.content}>
         <div className={styles.bgc}></div>
         {componentMap.map((FormItem, index) => {
-          return(
+          return (
             <FormItem
-                  key={`Value${index}`}
-                  class={stepIndex === index ? "" : "hide"}
-                  wrappedComponentRef={eval(`validateRef${index}`)}
-                  stepIndex={stepIndex === index ? index + 1 : ""}
-                />
-          )
+              key={`Value${index}`}
+              class={stepIndex === index ? "" : "hide"}
+              wrappedComponentRef={eval(`validateRef${index}`)}
+              stepIndex={stepIndex === index ? index + 1 : ""}
+            />
+          );
         })}
       </div>
       <div className={styles.footer}>
