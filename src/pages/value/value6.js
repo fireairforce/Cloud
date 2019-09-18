@@ -116,9 +116,7 @@ function ValueSix(props, ref) {
                   action={QINIU_SERVER}
                   data={{ token }}
                   listType="picture-card"
-                  beforeUpload={() => {
-                    getUploadToken("pic");
-                  }}
+                  beforeUpload={getUploadToken}
                   fileList={fileList1}
                   onPreview={handlePreview}
                   onChange={handleChange1}
@@ -145,9 +143,7 @@ function ValueSix(props, ref) {
                   action={QINIU_SERVER}
                   data={{ token }}
                   listType="picture-card"
-                  beforeUpload={() => {
-                    getUploadToken("lawyer");
-                  }}
+                  beforeUpload={getUploadToken}
                   fileList={fileList2}
                   onPreview={handlePreview}
                   onChange={handleChange2}

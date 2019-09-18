@@ -17,6 +17,8 @@ function ValueSeven(props, ref) {
   const [previewImage, setPreviewImage] = useState("");
   const [token, setToken] = useState("");
   const [fileList, setFileList] = useState([]);
+  const [fileList1, setFileList1] = useState([]);
+  const [fileList2, setFileList2] = useState([]);
   const formItemLayout = {
     labelCol: {
       xs: { span: 24 },
@@ -49,7 +51,46 @@ function ValueSeven(props, ref) {
     };
     fileList.pop();
     fileList.push(fileItem);
-    setFileList(fileList);
+    if (fileItem.status === "removed") {
+      fileList.pop();
+    }
+    setFileList([...fileList]);
+  };
+
+  const handleChange1 = ({ file, fileList }) => {
+    const { uid, name, type, thumbUrl, status, response = {} } = file;
+    const fileItem = {
+      uid,
+      name,
+      type,
+      thumbUrl,
+      status,
+      url: BASE_QINIU_URL + (response.hash || "")
+    };
+    fileList.pop();
+    fileList.push(fileItem);
+    if (fileItem.status === "removed") {
+      fileList.pop();
+    }
+    setFileList1([...fileList]);
+  };
+
+  const handleChange2 = ({ file, fileList }) => {
+    const { uid, name, type, thumbUrl, status, response = {} } = file;
+    const fileItem = {
+      uid,
+      name,
+      type,
+      thumbUrl,
+      status,
+      url: BASE_QINIU_URL + (response.hash || "")
+    };
+    fileList.pop();
+    fileList.push(fileItem);
+    if (fileItem.status === "removed") {
+      fileList.pop();
+    }
+    setFileList2([...fileList]);
   };
 
   const getUploadToken = () => {
@@ -77,7 +118,6 @@ function ValueSeven(props, ref) {
       return [error, value];
     }
   }));
-
   return (
     <div className={props.class}>
       <Form layout="horizontal" {...formItemLayout}>
@@ -105,7 +145,38 @@ function ValueSeven(props, ref) {
                   required: false
                 }
               ]
-            })(<Input />)}
+            })(
+              <div className={styles.upload}>
+                <div className={styles.uploadItem}>
+                  <Upload
+                    action={QINIU_SERVER}
+                    data={{ token }}
+                    listType="picture-card"
+                    beforeUpload={getUploadToken}
+                    fileList={fileList1}
+                    onPreview={handlePreview}
+                    onChange={handleChange1}
+                  >
+                    {fileList1.length >= 1 ? null : uploadButton}
+                  </Upload>
+                  <span>请上传报告正面</span>
+                </div>
+                <div className={styles.uploadItem}>
+                  <Upload
+                    action={QINIU_SERVER}
+                    data={{ token }}
+                    listType="picture-card"
+                    beforeUpload={getUploadToken}
+                    fileList={fileList2}
+                    onPreview={handlePreview}
+                    onChange={handleChange2}
+                  >
+                    {fileList2.length >= 1 ? null : uploadButton}
+                  </Upload>
+                  <span>请上传报告反面</span>
+                </div>
+              </div>
+            )}
           </FormItem>
 
           <FormItem label="鉴定机构" {...formItemLayout}>

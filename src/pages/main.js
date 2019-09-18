@@ -114,7 +114,7 @@ function Main() {
       </div>
       <div className={styles.content}>
         <div className={styles.bgc}></div>
-        <ValueSix />
+        <ValueSeven />
       </div>
       <div className={styles.footer}>
         {stepIndex === 0 ? (
