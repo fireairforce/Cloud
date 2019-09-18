@@ -13,7 +13,8 @@ import { Button } from "antd";
 import styles from "./value/style/main.module.less";
 // 请求函数
 import { startValue, saveValue, getValue } from "api/api.js";
-
+// mock数据测试
+import { newValue } from '../../mock'; 
 const componentMap = [
   ValueOne,
   ValueTwo,
@@ -39,13 +40,11 @@ function Main() {
   const validateRef4 = useRef(null);
   const validateRef5 = useRef(null);
   const validateRef6 = useRef(null);
-
   useEffect(() => {
     if (getToken()) {
       localStorage.setItem("token", getToken());
     }
   }, []);
-
   const handleBack = () => {
     console.log("回退功能，目前还没开发");
   };
@@ -115,18 +114,7 @@ function Main() {
       </div>
       <div className={styles.content}>
         <div className={styles.bgc}></div>
-        {componentMap.map((FormItem, index) => {
-          return (
-            /* eslint-disable no-alert, no-eval */
-            <FormItem
-              key={`Value${index}`}
-              class={stepIndex === index ? "" : "hide"}
-              wrappedComponentRef={eval(`validateRef${index}`)}
-              stepIndex={stepIndex === index ? index + 1 : ""}
-            />
-            /* eslint-disable no-alert, no-eval */
-          );
-        })}
+        <ValueSix />
       </div>
       <div className={styles.footer}>
         {stepIndex === 0 ? (

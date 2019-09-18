@@ -13,7 +13,8 @@ function ValueSix(props, ref) {
   const [previewVisible, setPreviewVisible] = useState(false);
   const [previewImage, setPreviewImage] = useState("");
   const [token, setToken] = useState("");
-  const [fileList, setFileList] = useState([]);
+  const [fileList1, setFileList1] = useState([]);
+  const [fileList2, setFileList2] = useState([]);
   const { form } = props;
   const { getFieldDecorator } = form;
 
@@ -37,7 +38,7 @@ function ValueSix(props, ref) {
     setPreviewVisible(false);
   };
 
-  const handleChange = ({ file, fileList }) => {
+  const handleChange1 = ({ file, fileList }) => {
     const { uid, name, type, thumbUrl, status, response = {} } = file;
     const fileItem = {
       uid,
@@ -49,10 +50,31 @@ function ValueSix(props, ref) {
     };
     fileList.pop();
     fileList.push(fileItem);
-    setFileList(fileList);
+    if (fileItem.status === "removed") {
+      fileList.pop();
+    }
+    setFileList1([...fileList]);
   };
 
-  const getUploadToken = () => {
+  const handleChange2 = ({ file, fileList }) => {
+    const { uid, name, type, thumbUrl, status, response = {} } = file;
+    const fileItem = {
+      uid,
+      name,
+      type,
+      thumbUrl,
+      status,
+      url: BASE_QINIU_URL + (response.hash || "")
+    };
+    fileList.pop();
+    fileList.push(fileItem);
+    if (fileItem.status === "removed") {
+      fileList.pop();
+    }
+    setFileList2([...fileList]);
+  };
+
+  const getUploadToken = type => {
     const token = getToken();
     setToken(token);
   };
@@ -77,7 +99,6 @@ function ValueSix(props, ref) {
       return [error, value];
     }
   }));
-
   return (
     <div className={props.class}>
       <Form layout="horizontal" {...formItemLayout}>
@@ -95,12 +116,14 @@ function ValueSix(props, ref) {
                   action={QINIU_SERVER}
                   data={{ token }}
                   listType="picture-card"
-                  beforeUpload={getUploadToken}
-                  fileList={fileList}
+                  beforeUpload={() => {
+                    getUploadToken("pic");
+                  }}
+                  fileList={fileList1}
                   onPreview={handlePreview}
-                  onChange={handleChange}
+                  onChange={handleChange1}
                 >
-                  {fileList.length >= 1 ? null : uploadButton}
+                  {fileList1.length >= 1 ? null : uploadButton}
                 </Upload>
                 <span className={styles.value1Content}>
                   请上传宝石的红外光谱图
@@ -122,12 +145,14 @@ function ValueSix(props, ref) {
                   action={QINIU_SERVER}
                   data={{ token }}
                   listType="picture-card"
-                  beforeUpload={getUploadToken}
-                  fileList={fileList}
+                  beforeUpload={() => {
+                    getUploadToken("lawyer");
+                  }}
+                  fileList={fileList2}
                   onPreview={handlePreview}
-                  onChange={handleChange}
+                  onChange={handleChange2}
                 >
-                  {fileList.length >= 1 ? null : uploadButton}
+                  {fileList2.length >= 1 ? null : uploadButton}
                 </Upload>
                 <span className={styles.value1Content}>
                   请上传法律文件的扫描件
