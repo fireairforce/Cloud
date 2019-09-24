@@ -71,6 +71,7 @@ function ValueTwo(props, ref) {
     }
   }));
   return (
+      <div >
     <div className={props.class}>
       <Form layout="horizontal" {...formItemLayout}>
         <div className={styles.wrapper}>
@@ -96,6 +97,7 @@ function ValueTwo(props, ref) {
         </div>
       </Form>
     </div>
+      </div>
   );
 }
 

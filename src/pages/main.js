@@ -107,28 +107,50 @@ function Main() {
   const startValue = () => {
     // req.startValue();
   };
+
+  const judgeHeight = () => {
+    if (stepIndex === 1) {
+      return {
+        height: "100%"
+      };
+    }
+    else {
+      return {
+        height: "auto"
+      }
+    }
+  };
   return (
-    <Fragment>
-      <div className={styles.header}>
-        <div className={styles.back} onClick={handleBack}>
-          <img src={back} alt="back" />
+    <div className={styles.bigBack} style={judgeHeight()}>
+        <div className={styles.header}>
+          <div className={styles.back} onClick={judgeHeight}>
+            <img src={back} alt="back" />
+          </div>
+          <span className={styles.title}>填写信息</span>
         </div>
-        <span className={styles.title}>填写信息</span>
-      </div>
+        <div className={styles.bgc}/>
       <div className={styles.content}>
-        <div className={styles.bgc}></div>
-        {componentMap.map((FormItem, index) => {
-          return (
-            /* eslint-disable no-alert, no-eval */
-            <FormItem
-              key={`Value${index}`}
-              class={stepIndex === index ? "" : "hide"}
-              wrappedComponentRef={eval(`validateRef${index}`)}
-              stepIndex={stepIndex === index ? index + 1 : ""}
-            />
-            /* eslint-disable no-alert, no-eval */
-          );
-        })}
+        {/*<ValueOne/>*/}
+        {/*<ValueTwo/>*/}
+        {/*<ValueThree/>*/}
+        {/*<ValueFour/>*/}
+        {/*<ValueFive/>*/}
+        {/*<ValueSix/>*/}
+        {/*<ValueSeven/>*/}
+        {
+          componentMap.map((FormItem, index) => {
+            return (
+                /* eslint-disable no-alert, no-eval */
+                <FormItem
+                    key={`Value${index}`}
+                    class={stepIndex === index ? "" : "hide"}
+                    wrappedComponentRef={eval(`validateRef${index}`)}
+                    stepIndex={stepIndex === index ? index + 1 : ""}
+                />
+                /* eslint-disable no-alert, no-eval */
+            );
+          })
+        }
       </div>
       <div className={styles.footer}>
         {stepIndex === 0 ? (
@@ -157,7 +179,7 @@ function Main() {
           </div>
         )}
       </div>
-    </Fragment>
+    </div>
   );
 }
 

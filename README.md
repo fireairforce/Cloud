@@ -111,3 +111,5 @@ cert_examiner
 获奖情况　无
 ```
 
+调底部button到表单内容在footer里改margin-top值就可以。
+页面二的高随stepIndex改变，当StepIndex === 1的时候就可以正常显示
