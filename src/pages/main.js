@@ -12,9 +12,9 @@ import back from "assets/color.png";
 import { Button } from "antd";
 import styles from "./value/style/main.module.less";
 // 请求函数
-import { startValue, saveValue, getValue } from "api/api.js";
+import * as req from "api/api.js";
 // mock数据测试
-import { newValue } from '../../mock'; 
+import { newValue } from "../../mock";
 const componentMap = [
   ValueOne,
   ValueTwo,
@@ -22,7 +22,7 @@ const componentMap = [
   ValueFour,
   ValueFive,
   ValueSix,
-  ValueSeven
+  ValueSeven,
 ];
 
 function getToken() {
@@ -55,54 +55,57 @@ function Main() {
       if (!error) {
         value.type = 1;
         ValueContent.push(value);
-        setStepIndex(c => c + 1);
+        setStepIndex((c) => c + 1);
       }
     } else if (stepIndex === 1) {
       let [err, values] = validateRef1.current.validate2();
       if (!err) {
         values.type = 2;
         ValueContent.push(values);
-        setStepIndex(c => c + 1);
+        setStepIndex((c) => c + 1);
       }
     } else if (stepIndex === 2) {
       let [err, values] = validateRef2.current.validate3();
       if (!err) {
         values.type = 3;
         ValueContent.push(values);
-        setStepIndex(c => c + 1);
+        setStepIndex((c) => c + 1);
       }
     } else if (stepIndex === 3) {
       let [err, values] = validateRef3.current.validate4();
       if (!err) {
         values.type = 4;
         ValueContent.push(values);
-        setStepIndex(c => c + 1);
+        setStepIndex((c) => c + 1);
       }
     } else if (stepIndex === 4) {
       let [err, values] = validateRef4.current.validate5();
       if (!err) {
         values.type = 5;
         ValueContent.push(values);
-        setStepIndex(c => c + 1);
+        setStepIndex((c) => c + 1);
       }
     } else if (stepIndex === 5) {
       let [err, values] = validateRef5.current.validate6();
       if (!err) {
         values.type = 6;
         ValueContent.push(values);
-        setStepIndex(c => c + 1);
+        setStepIndex((c) => c + 1);
       }
     } else if (stepIndex === 6) {
       let [err, values] = validateRef6.current.validate7();
       if (!err) {
         values.type = 7;
         ValueContent.push(values);
-        setStepIndex(c => c + 1);
+        setStepIndex((c) => c + 1);
       }
     }
   };
   const goPrev = () => {
-    setStepIndex(c => c - 1);
+    setStepIndex((c) => c - 1);
+  };
+  const startValue = () => {
+    // req.startValue();
   };
   return (
     <Fragment>
@@ -114,7 +117,18 @@ function Main() {
       </div>
       <div className={styles.content}>
         <div className={styles.bgc}></div>
-        <ValueSeven />
+        {componentMap.map((FormItem, index) => {
+          return (
+            /* eslint-disable no-alert, no-eval */
+            <FormItem
+              key={`Value${index}`}
+              class={stepIndex === index ? "" : "hide"}
+              wrappedComponentRef={eval(`validateRef${index}`)}
+              stepIndex={stepIndex === index ? index + 1 : ""}
+            />
+            /* eslint-disable no-alert, no-eval */
+          );
+        })}
       </div>
       <div className={styles.footer}>
         {stepIndex === 0 ? (
@@ -137,7 +151,7 @@ function Main() {
             <Button type="primary" className={styles.btn1} onClick={goPrev}>
               上一步
             </Button>
-            <Button type="primary" className={styles.btn2}>
+            <Button type="primary" className={styles.btn2} onClick={startValue}>
               开始估值
             </Button>
           </div>

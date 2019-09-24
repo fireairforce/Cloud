@@ -27,14 +27,11 @@ import styles from "index.module.less";
 
 但是目前发现一个问题`cra`这个库里面并不支持`webpack`的`publicPath`这个配置，因此上线的文件并不会自带`path`，可能需要自己弄一下。
 
-## Now
+## 接口情况
 
 目前正在进行请求对接
 
 - 问题
-  Value3 页面那里好像接口少个"品种"的字段。
-
-以及完成产品的新的原型图
 
 Value1 的接口过了
 
@@ -114,19 +111,3 @@ cert_examiner
 获奖情况　无
 ```
 
-```js
-{
-  componentMap.map((FormItem, index) => {
-    return (
-      /* eslint-disable no-alert, no-eval */
-      <FormItem
-        key={`Value${index}`}
-        class={stepIndex === index ? "" : "hide"}
-        wrappedComponentRef={eval(`validateRef${index}`)}
-        stepIndex={stepIndex === index ? index + 1 : ""}
-      />
-      /* eslint-disable no-alert, no-eval */
-    );
-  });
-}
-```
