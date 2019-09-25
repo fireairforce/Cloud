@@ -1,16 +1,16 @@
 import React, { Fragment, useRef, useEffect, useState } from "react";
 // 组件
-import ValueOne from "./value/value1";
-import ValueTwo from "./value/value2";
-import ValueThree from "./value/value3";
-import ValueFour from "./value/value4";
-import ValueFive from "./value/value5";
-import ValueSix from "./value/value6";
-import ValueSeven from "./value/value7";
+import ValueOne from "components/value/value1";
+import ValueTwo from "components/value/value2";
+import ValueThree from "components/value/value3";
+import ValueFour from "components/value/value4";
+import ValueFive from "components/value/value5";
+import ValueSix from "components/value/value6";
+import ValueSeven from "components/value/value7";
 // 头部和底部
 import back from "assets/color.png";
 import { Button } from "antd";
-import styles from "./value/style/main.module.less";
+import styles from "components/value/style/main.module.less";
 // 请求函数
 import * as req from "api/api.js";
 // mock数据测试

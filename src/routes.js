@@ -15,19 +15,29 @@ function Loading({ error }) {
   }
 }
 
-const Home = Loadable({
-  loader: () => import('./pages/main'),
+const Value = Loadable({
+  loader: () => import('./pages/value'),
   loading: Loading
 });
 
+const News = Loadable({
+  loader: () => import('./pages/news'),
+  loading: Loading
+})
 
 export default [
   {
-    name: '首页',
-    icon: 'home',
+    name: '估值页面',
+    icon: 'value',
     path: '/',
-    component: Home,
+    component: Value,
     key: 0
+  },{
+    name:'咨询页面',
+    icon: 'news',
+    path: '/news',
+    component: News,
+    key: 1
   }
 ]
 

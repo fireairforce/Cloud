@@ -33,7 +33,8 @@ module.exports = override(
     ["utils"]: resolve(__dirname, "./src/utils"),
     ["pages"]: resolve(__dirname, "./src/pages"),
     ["assets"]: resolve(__dirname, "./src/assets"),
-    ["api"]: resolve(__dirname, "./src/api")
+    ["api"]: resolve(__dirname, "./src/api"),
+    ["components"]: resolve(__dirname,"./src/components")
   }),
   // 其实这个并不是很需要
   addDecoratorsLegacy(),
