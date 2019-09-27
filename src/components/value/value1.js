@@ -1,4 +1,9 @@
-import React, { useState, useImperativeHandle, forwardRef , useEffect } from "react";
+import React, {
+  useState,
+  useImperativeHandle,
+  forwardRef,
+  useEffect,
+} from "react";
 import { Form, Input, Select, Upload, Icon, Modal } from "antd";
 import styles from "./style/value.module.less";
 import { getToken } from "utils/qiniu";
@@ -11,7 +16,7 @@ const FormItem = Form.Item;
 const Option = Select.Option;
 const { TextArea } = Input;
 
-function ValueOne({form,classStep}, ref) {
+function ValueOne({ form, classStep, selectdata }, ref) {
   const [previewVisible, setPreviewVisible] = useState(false);
   const [previewImage, setPreviewImage] = useState("");
   const [token, setToken] = useState("");
@@ -20,15 +25,15 @@ function ValueOne({form,classStep}, ref) {
   const formItemLayout = {
     labelCol: {
       xs: { span: 24 },
-      sm: { span: 6 }
+      sm: { span: 6 },
     },
     wrapperCol: {
       xs: { span: 24 },
-      sm: { span: 16 }
-    }
+      sm: { span: 16 },
+    },
   };
 
-  const handlePreview = file => {
+  const handlePreview = (file) => {
     setPreviewImage(file.url || file.thumbUrl);
     setPreviewVisible(true);
   };
@@ -45,16 +50,15 @@ function ValueOne({form,classStep}, ref) {
       type,
       thumbUrl,
       status,
-      url: BASE_QINIU_URL + (response.hash || "")
+      url: BASE_QINIU_URL + (response.hash || ""),
     };
-      fileItem.preview = fileItem.url;
+    fileItem.preview = fileItem.url;
+    fileList.pop();
+    fileList.push(fileItem);
+    if (fileItem.status === "removed") {
       fileList.pop();
-      fileList.push(fileItem);
-      if(fileItem.status === 'removed'){
-        fileList.pop();
-      }
-      setFileList([...fileList]);
-   
+    }
+    setFileList([...fileList]);
   };
   const getUploadToken = () => {
     const token = getToken();
@@ -79,21 +83,22 @@ function ValueOne({form,classStep}, ref) {
         "color",
         "transparency",
         "picture_url",
-        "exterior"
+        "exterior",
       ];
       form.validateFields(validateArray, (err, values) => {
         error = err;
         value = values;
         if (fileList.length !== 0) {
           value.picture_url = [];
-          fileList.map(item => {
+          fileList.map((item) => {
             value.picture_url.push(item.url);
           });
         }
       });
       return [error, value];
-    }
+    },
   }));
+  console.log(selectdata);
   return (
     <div className={classStep}>
       <Form layout="horizontal">
@@ -103,17 +108,23 @@ function ValueOne({form,classStep}, ref) {
               rules: [
                 {
                   required: true,
-                  message: "请选择宝石"
-                }
-              ]
+                  message: "请选择宝石",
+                },
+              ],
             })(
               <Select placeholder="请选择宝石">
-                {valueOption1.map(item => (
-                  <Option key={item.id} value={item.id}>
-                    {item.value}
-                  </Option>
-                ))}
-              </Select>
+                {selectdata
+                  ? selectdata.map((item) => (
+                      <Option key={item.id} value={item.id}>
+                        {item.name}
+                      </Option>
+                    ))
+                  : valueOption1.map((item) => (
+                      <Option key={item.id} value={item.id}>
+                        {item.value}
+                      </Option>
+                    ))}
+              </Select>,
             )}
           </FormItem>
 
@@ -122,9 +133,9 @@ function ValueOne({form,classStep}, ref) {
               rules: [
                 {
                   required: true,
-                  message: "请填写宝石颜色"
-                }
-              ]
+                  message: "请填写宝石颜色",
+                },
+              ],
             })(<Input placeholder="例：无色/接近无色/绿色/淡紫色" />)}
           </FormItem>
 
@@ -133,9 +144,9 @@ function ValueOne({form,classStep}, ref) {
               rules: [
                 {
                   required: true,
-                  message: "请填写宝石透明度"
-                }
-              ]
+                  message: "请填写宝石透明度",
+                },
+              ],
             })(<Input placeholder="例：透明到不透明/透明" />)}
           </FormItem>
 
@@ -144,9 +155,9 @@ function ValueOne({form,classStep}, ref) {
               rules: [
                 {
                   required: false,
-                  message: "请上传宝石照片"
-                }
-              ]
+                  message: "请上传宝石照片",
+                },
+              ],
             })(
               <>
                 <Upload
@@ -163,7 +174,7 @@ function ValueOne({form,classStep}, ref) {
                 <span className={styles.value1Content}>
                   您最多只能上传四张图片
                 </span>
-              </>
+              </>,
             )}
           </FormItem>
 
@@ -176,24 +187,22 @@ function ValueOne({form,classStep}, ref) {
               rules: [
                 {
                   required: true,
-                  message: "请填写外观描述"
-                }
-              ]
+                  message: "请填写外观描述",
+                },
+              ],
             })(
               <TextArea
                 rows={4}
                 placeholder="例：它呈浅-中等色调的蓝色，有时呈淡绿色，内含物少，单行输入"
-              />
+              />,
             )}
           </FormItem>
-          <div className={styles.bar1}>
-          </div>
+          <div className={styles.bar1}></div>
         </div>
         <Modal visible={previewVisible} footer={null} onCancel={handleCancel}>
           <img style={{ width: "100%" }} src={previewImage} alt="previewImg" />
         </Modal>
       </Form>
-
     </div>
   );
 }
