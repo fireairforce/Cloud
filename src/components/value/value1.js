@@ -79,26 +79,24 @@ function ValueOne(props, ref) {
       const validateArray = [
         "name",
         "color",
-        "transparent",
-        "pic",
-        "description"
+        "transparency",
+        "picture_url",
+        "exterior"
       ];
       // 开始进行校验
       form.validateFields(validateArray, (err, values) => {
         error = err;
         value = values;
         if (fileList.length !== 0) {
-          value.pic = [];
+          value.picture_url = [];
           fileList.map(item => {
-            value.pic.push(item.url);
+            value.picture_url.push(item.url);
           });
         }
       });
       return [error, value];
     }
   }));
-
-  // console.log(fileList);
 
   return (
     <div className={props.class}>

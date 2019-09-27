@@ -28,7 +28,7 @@ const listData = [
     id: 4,
     label: "抛光",
     placeholder: "请填写宝石的抛光详情",
-    field: "Polishing",
+    field: "dispersion",
     message: "请填写宝石的抛光情况"
   },
   {

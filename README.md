@@ -27,89 +27,11 @@ import styles from "index.module.less";
 
 但是目前发现一个问题`cra`这个库里面并不支持`webpack`的`publicPath`这个配置，因此上线的文件并不会自带`path`，可能需要自己弄一下。
 
-## 接口情况
-
-目前正在进行请求对接
-
-- 问题
-
-Value1 的接口过了
-
-```
-name
-color
-transparency
-picture_url
-exterior
-```
-
-Value2 接口过了
-
-```
-quality
-length
-width
-height
-carving
-```
-
-Value3 接口
-
-```
-品种  无
-definition
-age_place
-luster
-optical
-fluorescence
-```
-
-Value4 接口
-
-```
-mineral_structure
-chemical_structure
-结晶状态　无
-microscopic
-mohs
-density
-```
-
-Value5 接口
-
-```
-refraction
-cleavage
-special_optical
-抛光　无
-特殊工艺　无
-制作信息　无
-工时　无
-```
-
-Value6 接口
-
-```
-infrared
-法律文件　无
-托管和存放　无
-holder_valuation
-third_valuation
-```
-
-Value7 接口
-
-```
-是否有鉴定报告　无
-cert_report_picture
-cert_body
-cert_date
-cert_examiner
-宝石是否获奖　无
-上传品牌文件等　无
-名称寓意　无
-获奖情况　无
-```
-
 调底部button到表单内容在footer里改margin-top值就可以。
 页面二的高随stepIndex改变，当StepIndex === 1的时候就可以正常显示
+
+## 接口情况
+```
+value3 无品种字段
+
+```

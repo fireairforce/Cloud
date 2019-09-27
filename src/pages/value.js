@@ -14,7 +14,7 @@ import styles from "components/value/style/main.module.less";
 // 请求函数
 import * as req from "api/api.js";
 // mock数据测试
-import { newValue } from "../../mock";
+import { newValue } from "api/mock";
 const componentMap = [
   ValueOne,
   ValueTwo,
@@ -29,10 +29,9 @@ function getToken() {
   return window.location.search.split("=")[1];
 }
 
-const ValueContent = [];
-
 function Main() {
   const [stepIndex, setStepIndex] = useState(0);
+  const [valueContent,setValueContent] = useState([]);
   const validateRef0 = useRef(null);
   const validateRef1 = useRef(null);
   const validateRef2 = useRef(null);
@@ -53,50 +52,43 @@ function Main() {
     if (stepIndex === 0) {
       let [error, value] = validateRef0.current.validate1();
       if (!error) {
-        value.type = 1;
-        ValueContent.push(value);
+        setValueContent([...valueContent,value])
         setStepIndex((c) => c + 1);
       }
     } else if (stepIndex === 1) {
       let [err, values] = validateRef1.current.validate2();
       if (!err) {
-        values.type = 2;
-        ValueContent.push(values);
+        setValueContent([...valueContent,values])
         setStepIndex((c) => c + 1);
       }
     } else if (stepIndex === 2) {
       let [err, values] = validateRef2.current.validate3();
       if (!err) {
-        values.type = 3;
-        ValueContent.push(values);
+        setValueContent([...valueContent,values]);
         setStepIndex((c) => c + 1);
       }
     } else if (stepIndex === 3) {
       let [err, values] = validateRef3.current.validate4();
       if (!err) {
-        values.type = 4;
-        ValueContent.push(values);
+        setValueContent([...valueContent,values]);
         setStepIndex((c) => c + 1);
       }
     } else if (stepIndex === 4) {
       let [err, values] = validateRef4.current.validate5();
       if (!err) {
-        values.type = 5;
-        ValueContent.push(values);
+        setValueContent([...valueContent,values]);
         setStepIndex((c) => c + 1);
       }
     } else if (stepIndex === 5) {
       let [err, values] = validateRef5.current.validate6();
       if (!err) {
-        values.type = 6;
-        ValueContent.push(values);
+        setValueContent([...valueContent,values]);
         setStepIndex((c) => c + 1);
       }
     } else if (stepIndex === 6) {
       let [err, values] = validateRef6.current.validate7();
       if (!err) {
-        values.type = 7;
-        ValueContent.push(values);
+        setValueContent([...valueContent,values]);
         setStepIndex((c) => c + 1);
       }
     }
@@ -120,6 +112,8 @@ function Main() {
       }
     }
   };
+
+  console.log(valueContent);
   return (
     <div className={styles.bigBack} style={judgeHeight()}>
         <div className={styles.header}>
