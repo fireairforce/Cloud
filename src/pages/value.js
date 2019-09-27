@@ -56,9 +56,6 @@ function Main() {
       }
     });
   }, []);
-  const handleBack = () => {
-    console.log("回退功能，目前还没开发");
-  };
 
   const goNext = () => {
     if (stepIndex === 0) {
@@ -106,6 +103,10 @@ function Main() {
     }
   };
   const goPrev = () => {
+    // 上一步时把之前存的删一下
+    const tempValue = valueContent;
+    tempValue.splice(stepIndex-1,1);
+    setValueContent(tempValue);
     setStepIndex((c) => c - 1);
   };
   const startValue = () => {
@@ -123,6 +124,7 @@ function Main() {
       };
     }
   };
+  console.log(valueContent);
   return (
     <div className={styles.bigBack} style={judgeHeight()}>
       <div className={styles.header}>

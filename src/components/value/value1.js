@@ -88,6 +88,9 @@ function ValueOne({ form, classStep, selectdata }, ref) {
       form.validateFields(validateArray, (err, values) => {
         error = err;
         value = values;
+        const catalog = value.name.split('+');
+        value.categories_id = catalog[0];
+        value.name = catalog[1];
         if (fileList.length !== 0) {
           value.picture_url = [];
           fileList.map((item) => {
@@ -98,7 +101,6 @@ function ValueOne({ form, classStep, selectdata }, ref) {
       return [error, value];
     },
   }));
-  console.log(selectdata);
   return (
     <div className={classStep}>
       <Form layout="horizontal">
@@ -115,7 +117,7 @@ function ValueOne({ form, classStep, selectdata }, ref) {
               <Select placeholder="请选择宝石">
                 {selectdata
                   ? selectdata.map((item) => (
-                      <Option key={item.id} value={item.id}>
+                      <Option key={item.id} value={`${item.id}+${item.name}`}>
                         {item.name}
                       </Option>
                     ))
