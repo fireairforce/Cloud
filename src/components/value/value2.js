@@ -40,9 +40,8 @@ const listData = [
   }
 ];
 
-function ValueTwo(props, ref) {
-  const { form } = props;
-  const { getFieldDecorator } = props.form;
+function ValueTwo({form,classStep}, ref) {
+  const { getFieldDecorator } = form;
   const formItemLayout = {
     labelCol: {
       xs: { span: 24 },
@@ -72,7 +71,7 @@ function ValueTwo(props, ref) {
   }));
   return (
       <div >
-    <div className={props.class}>
+    <div className={classStep}>
       <Form layout="horizontal" {...formItemLayout}>
         <div className={styles.wrapper}>
           {listData.map(item => {

@@ -47,8 +47,7 @@ const listData = [
   }
 ];
 
-function ValueFour(props, ref) {
-  const { form } = props;
+function ValueFour({form,classStep}, ref) {
   const { getFieldDecorator } = form;
   const formItemLayout = {
     labelCol: {
@@ -79,7 +78,7 @@ function ValueFour(props, ref) {
   }));
 
   return (
-    <div className={props.class}>
+    <div className={classStep}>
       <Form layout="horizontal" {...formItemLayout}>
         <div className={styles.wrapper}>
           {listData.map(item => {

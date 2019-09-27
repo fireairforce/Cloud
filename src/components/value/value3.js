@@ -47,8 +47,7 @@ const listData = [
   }
 ];
 
-function ValueThree(props,ref) {
-  const { form } = props;
+function ValueThree({form,classStep},ref) {
   const { getFieldDecorator } = form;
   const formItemLayout = {
     labelCol: {
@@ -79,7 +78,7 @@ function ValueThree(props,ref) {
   }));
 
   return (
-    <div className={props.class}>
+    <div className={classStep}>
       <Form layout="horizontal" {...formItemLayout}>
         <div className={styles.wrapper}>
             {listData.map(item => {

@@ -1,4 +1,4 @@
-import React, { useState, useImperativeHandle, forwardRef } from "react";
+import React, { useState, useImperativeHandle, forwardRef , useEffect } from "react";
 import { Form, Input, Select, Upload, Icon, Modal } from "antd";
 import styles from "./style/value.module.less";
 import { getToken } from "utils/qiniu";
@@ -11,13 +11,11 @@ const FormItem = Form.Item;
 const Option = Select.Option;
 const { TextArea } = Input;
 
-
-function ValueOne(props, ref) {
+function ValueOne({form,classStep}, ref) {
   const [previewVisible, setPreviewVisible] = useState(false);
   const [previewImage, setPreviewImage] = useState("");
   const [token, setToken] = useState("");
   const [fileList, setFileList] = useState([]);
-  const { form } = props;
   const { getFieldDecorator } = form;
   const formItemLayout = {
     labelCol: {
@@ -83,7 +81,6 @@ function ValueOne(props, ref) {
         "picture_url",
         "exterior"
       ];
-      // 开始进行校验
       form.validateFields(validateArray, (err, values) => {
         error = err;
         value = values;
@@ -97,9 +94,8 @@ function ValueOne(props, ref) {
       return [error, value];
     }
   }));
-
   return (
-    <div className={props.class}>
+    <div className={classStep}>
       <Form layout="horizontal">
         <div className={styles.wrapper}>
           <FormItem label="宝玉石名称" {...formItemLayout}>

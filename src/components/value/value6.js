@@ -9,13 +9,12 @@ const QINIU_SERVER = "http://upload.qiniup.com";
 const BASE_QINIU_URL = "http://wdlj.zoomdong.xin/";
 const FormItem = Form.Item;
 
-function ValueSix(props, ref) {
+function ValueSix({form,classStep}, ref) {
   const [previewVisible, setPreviewVisible] = useState(false);
   const [previewImage, setPreviewImage] = useState("");
   const [token, setToken] = useState("");
   const [fileList1, setFileList1] = useState([]);
   const [fileList2, setFileList2] = useState([]);
-  const { form } = props;
   const { getFieldDecorator } = form;
 
   const formItemLayout = {
@@ -106,7 +105,7 @@ function ValueSix(props, ref) {
     }
   }));
   return (
-    <div className={props.class}>
+    <div className={classStep}>
       <Form layout="horizontal" {...formItemLayout}>
         <div className={styles.wrapper}>
           <FormItem label="上传红外光谱" {...formItemLayout}>

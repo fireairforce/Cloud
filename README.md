@@ -31,6 +31,68 @@ import styles from "index.module.less";
 页面二的高随stepIndex改变，当StepIndex === 1的时候就可以正常显示
 
 ## 接口情况
-```
-value3 无品种字段
+
+```json
+{
+    "name": "钻石啊",
+    "categories_id": 1,
+    "quality": 1.5,
+    "shape": {
+        "length": 0.1,
+        "height": 0.3,
+        "width": 0.2
+    },
+    "picture_url": [
+        "http://cdn.elatis.cn/archives/313/66613251_p0_2.png",
+        "http://cdn.elatis.cn/archives/271/56866134_p0.jpg"
+    ],
+    "crystal_info": {
+        "carving": "雕刻",
+        "definition": "术语与定义",
+        "age_place": "年代与产地",
+        "mineral_structure": "主要矿物组成",
+        "chemical_structure": "主要化学组成",
+        "exterior": "外观描述",
+        "color": "颜色",
+        "luster": "光泽",
+        "transparency": "透明度",
+        "cleavage": "解理",
+        "optical": "光线特征",
+        "mohs": "摩氏硬度",
+        "density": "密度",
+        "refraction": "折射率",
+        "fluorescence": "荧光观察",
+        "infrared": "红外光谱",
+        "microscopic": "显微结构",
+        "special_optical": "光学效应",
+        "crystal_system": "晶系",
+        "dispersion": "抛光",
+        "others": {
+            "working_hours":"工时",
+            "special_technology":"特殊工艺",
+            "make_infomation":"制作信息",   
+            "variety":"品种",   
+            "lawyer_file":"法律文件",
+            "save":"托管和存放"
+        }
+    },
+    "third_valuation": 19000.5,
+    "holder_valuation": 35000.5,
+    "certification_info": {
+        "cert_report":"是否存在报告",
+        "cert_report_picture": [
+            "http://cdn.elatis.cn/archives/313/66613251_p0_2.png",
+            "http://cdn.elatis.cn/archives/271/56866134_p0.jpg"
+        ],
+        "cert_body": "鉴定机构",
+        "cert_date": "2019-09-15",
+        "cert_examiner": "鉴定人"
+    },
+    "reward_info": {
+        "reward": "是否获奖",
+        "record_article":"上传获奖文章",
+        "record_condition":"获奖情况",
+        "name_predict":"名称寓意"
+    }
+}
 ```

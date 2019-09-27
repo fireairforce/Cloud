@@ -10,9 +10,8 @@ const BASE_QINIU_URL = "http://wdlj.zoomdong.xin/";
 const FormItem = Form.Item;
 const RadioGroup = Radio.Group;
 
-function ValueSeven(props, ref) {
-  const { form } = props;
-  const { getFieldDecorator } = props.form;
+function ValueSeven({form,classStep}, ref) {
+  const { getFieldDecorator } = form;
   const [previewVisible, setPreviewVisible] = useState(false);
   const [previewImage, setPreviewImage] = useState("");
   const [token, setToken] = useState("");
@@ -129,7 +128,7 @@ function ValueSeven(props, ref) {
     }
   }));
   return (
-    <div className={props.class}>
+    <div className={classStep}>
       <Form layout="horizontal" {...formItemLayout}>
         <div className={styles.wrapper}>
           <FormItem label="您的宝石是否有鉴定报告" {...formItemLayout}>
