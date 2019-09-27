@@ -7,7 +7,7 @@ const listData = [
     id: 1,
     label: "品种",
     placeholder: "请选择品种",
-    field: "Variety",
+    field: "variety",
     message: "请填写宝石的品种"
   },
   {

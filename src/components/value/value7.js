@@ -123,7 +123,7 @@ function ValueSeven(props, ref) {
       <Form layout="horizontal" {...formItemLayout}>
         <div className={styles.wrapper}>
           <FormItem label="您的宝石是否有鉴定报告" {...formItemLayout}>
-            {getFieldDecorator("cert_report_picture", {
+            {getFieldDecorator("cert_report", {
               rules: [
                 {
                   required: true,
@@ -139,7 +139,7 @@ function ValueSeven(props, ref) {
           </FormItem>
 
           <FormItem label="上传鉴定报告扫描件" {...formItemLayout}>
-            {getFieldDecorator("smj", {
+            {getFieldDecorator("cert_report_picture", {
               rules: [
                 {
                   required: false
@@ -199,8 +199,18 @@ function ValueSeven(props, ref) {
             })(<Input placeholder="请填写宝石的鉴定时间，例：2018.1.2" />)}
           </FormItem>
 
+          <FormItem label="鉴定人/团队" {...formItemLayout}>
+            {getFieldDecorator("cert_examiner", {
+              rules: [
+                {
+                  required: false
+                }
+              ]
+            })(<Input placeholder="请填写宝石的鉴定人或团队" />)}
+          </FormItem>
+
           <FormItem label="您的宝石是否有名称及获奖？" {...formItemLayout}>
-            {getFieldDecorator("sfhj", {
+            {getFieldDecorator("reward_info", {
               rules: [
                 {
                   required: true,
@@ -216,7 +226,7 @@ function ValueSeven(props, ref) {
           </FormItem>
 
           <FormItem label="上传品牌/文章/获奖文件等 " {...formItemLayout}>
-            {getFieldDecorator("hjwj", {
+            {getFieldDecorator("record_article", {
               rules: [
                 {
                   required: false
@@ -241,7 +251,7 @@ function ValueSeven(props, ref) {
           </FormItem>
 
           <FormItem label="名称寓意" {...formItemLayout}>
-            {getFieldDecorator("mcyy", {
+            {getFieldDecorator("name_predict", {
               rules: [
                 {
                   required: false
@@ -251,7 +261,7 @@ function ValueSeven(props, ref) {
           </FormItem>
 
           <FormItem label="获奖情况" {...formItemLayout}>
-            {getFieldDecorator("hjqk", {
+            {getFieldDecorator("record_condition", {
               rules: [
                 {
                   required: false

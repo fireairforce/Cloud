@@ -35,21 +35,21 @@ const listData = [
     id: 5,
     label: "特殊工艺",
     placeholder: "例：审料/切割/抛光",
-    field: "SpecialTechnology",
+    field: "special_technology",
     message: "请填写宝石的特殊工艺"
   },
   {
     id: 6,
     label: "制作信息",
     placeholder: "可填写制作工厂/公司/制作人",
-    field: "MakingInformation",
+    field: "make_infomation",
     message: "请填写宝石的制作信息"
   },
   {
     id: 7,
     label: "工时",
     placeholder: "填写宝石的加工工时",
-    field: "WorkingHours",
+    field: "working_hours",
     message: "请填写宝石的加工工时"
   }
 ];

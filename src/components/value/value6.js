@@ -104,7 +104,7 @@ function ValueSix(props, ref) {
       <Form layout="horizontal" {...formItemLayout}>
         <div className={styles.wrapper}>
           <FormItem label="上传红外光谱" {...formItemLayout}>
-            {getFieldDecorator("hongwai", {
+            {getFieldDecorator("infrared", {
               rules: [
                 {
                   required: false
@@ -131,7 +131,7 @@ function ValueSix(props, ref) {
           </FormItem>
 
           <FormItem label="上传法律文件" {...formItemLayout}>
-            {getFieldDecorator("lawyer", {
+            {getFieldDecorator("lawyer_file", {
               rules: [
                 {
                   required: false
@@ -168,7 +168,7 @@ function ValueSix(props, ref) {
           </FormItem>
 
           <FormItem label="持有人出价" {...formItemLayout}>
-            {getFieldDecorator("peoplemoney", {
+            {getFieldDecorator("holder_valuation", {
               rules: [
                 {
                   required: false
@@ -178,7 +178,7 @@ function ValueSix(props, ref) {
           </FormItem>
 
           <FormItem label="第三方估值" {...formItemLayout}>
-            {getFieldDecorator("guessvalue", {
+            {getFieldDecorator("third_valuation", {
               rules: [
                 {
                   required: false
