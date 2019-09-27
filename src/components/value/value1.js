@@ -2,7 +2,6 @@ import React, {
   useState,
   useImperativeHandle,
   forwardRef,
-  useEffect,
 } from "react";
 import { Form, Input, Select, Upload, Icon, Modal } from "antd";
 import styles from "./style/value.module.less";

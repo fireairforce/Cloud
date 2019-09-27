@@ -14,7 +14,6 @@ import styles from "components/value/style/main.module.less";
 // 请求函数
 import * as req from "api/api.js";
 // mock数据测试
-import { newValue } from "api/mock";
 const componentMap = [
   ValueOne,
   ValueTwo,
@@ -33,13 +32,6 @@ function Main() {
   const [stepIndex, setStepIndex] = useState(0);
   const [valueContent, setValueContent] = useState([]);
   const [selectData, setSelectData] = useState([]);
-  const validateRef0 = useRef(null);
-  const validateRef1 = useRef(null);
-  const validateRef2 = useRef(null);
-  const validateRef3 = useRef(null);
-  const validateRef4 = useRef(null);
-  const validateRef5 = useRef(null);
-  const validateRef6 = useRef(null);
   useEffect(() => {
     if (getToken()) {
       localStorage.setItem("token", getToken());
@@ -56,7 +48,13 @@ function Main() {
       }
     });
   }, []);
-
+  const validateRef0 = useRef(null);
+  const validateRef1 = useRef(null);
+  const validateRef2 = useRef(null);
+  const validateRef3 = useRef(null);
+  const validateRef4 = useRef(null);
+  const validateRef5 = useRef(null);
+  const validateRef6 = useRef(null);
   const goNext = () => {
     if (stepIndex === 0) {
       let [error, value] = validateRef0.current.validate1();
@@ -94,23 +92,77 @@ function Main() {
         setValueContent([...valueContent, values]);
         setStepIndex((c) => c + 1);
       }
-    } else if (stepIndex === 6) {
-      let [err, values] = validateRef6.current.validate7();
-      if (!err) {
-        setValueContent([...valueContent, values]);
-        setStepIndex((c) => c + 1);
-      }
     }
   };
   const goPrev = () => {
     // 上一步时把之前存的删一下
     const tempValue = valueContent;
-    tempValue.splice(stepIndex-1,1);
+    tempValue.splice(stepIndex - 1, 1);
     setValueContent(tempValue);
     setStepIndex((c) => c - 1);
   };
   const startValue = () => {
-    // req.startValue();
+    if (stepIndex === 6) {
+      let [err, values] = validateRef6.current.validate7();
+      if (!err) {
+        setValueContent([...valueContent, values]);
+      }
+    }
+    console.log(valueContent);
+    const valuePush = {};
+    valuePush.shape = {};
+    valuePush.reward_info = {};
+    valuePush.certification_info = {};
+    valuePush.crystal_info = {};
+    valuePush.crystal_info.others = {};
+    // 洗一下数据,sb后端
+    for (let i = 0; i < valueContent.length; i++) {
+      for (let id in valueContent[i]) {
+        let item = valueContent[i][id];
+        if (item) {
+          if (id === "length" || id === "height" || id === "width") {
+            valuePush.shape[id] = item;
+          } else if (
+            id === "name" ||
+            id === "categories_id" ||
+            id === "quality" ||
+            id === "third_valuation" ||
+            id === "holder_valuation"
+          ) {
+            valuePush[id] = item;
+          } else if (
+            id === "reward" ||
+            id === "record_article" ||
+            id === "record_condition" ||
+            id === "name_predict"
+          ) {
+            valuePush.reward_info[id] = item;
+          } else if (
+            id === "cert_report" ||
+            id === "cert_report_picture" ||
+            id === "cert_body" ||
+            id === "cert_date" ||
+            id === "cert_examiner"
+          ) {
+            valuePush.certification_info[id] = item;
+          } else {
+            if (
+              id === "working_hours" ||
+              id === "special_technology" ||
+              id === "make_infomation" ||
+              id === "variety" ||
+              id === "lawyer_file" ||
+              id === "save"
+            ) {
+              valuePush.crystal_info.others[id] = item;
+            } else {
+              valuePush.crystal_info[id] = item;
+            }
+          }
+        }
+      }
+    }
+    console.log(valuePush);
   };
 
   const judgeHeight = () => {

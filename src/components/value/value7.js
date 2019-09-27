@@ -123,6 +123,22 @@ function ValueSeven({form,classStep}, ref) {
       form.validateFields(validateArray, (err, values) => {
         error = err;
         value = values;
+        value.cert_report_picture = [];
+        if(fileList.length!==0){
+          fileList.map(item=>{
+             value.record_article = item.url;
+          })
+        }
+        if(fileList1.length !==0 ){
+          fileList1.map(item=>{
+            value.cert_report_picture.push(item.url);
+          })
+        }
+        if(fileList2.length!==0){
+          fileList2.map(item=>{
+            value.cert_report_picture.push(item.url);
+          })
+        }
       });
       return [error, value];
     }
@@ -135,7 +151,7 @@ function ValueSeven({form,classStep}, ref) {
             {getFieldDecorator("cert_report", {
               rules: [
                 {
-                  required: true,
+                  required: false,
                   message: "请选择是否有鉴定报告"
                 }
               ]
@@ -222,7 +238,7 @@ function ValueSeven({form,classStep}, ref) {
             {getFieldDecorator("reward_info", {
               rules: [
                 {
-                  required: true,
+                  required: false,
                   message: "请选择获奖情况"
                 }
               ]

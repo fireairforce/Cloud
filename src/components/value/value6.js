@@ -100,6 +100,16 @@ function ValueSix({form,classStep}, ref) {
       form.validateFields(validateArray, (err, values) => {
         error = err;
         value = values;
+        if(fileList1.length!==0){
+          fileList1.map(item=>{
+            value.infrared = item.url;
+          })
+        }
+        if(fileList2.length!==0){
+          fileList2.map(item=>{
+            value.lawyer_file = item.url;
+          })
+        }
       });
       return [error, value];
     }
