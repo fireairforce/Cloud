@@ -7,6 +7,10 @@
         "height": 0.3,
         "width": 0.2
     },
+    "picture_url": [
+        "http://cdn.elatis.cn/archives/313/66613251_p0_2.png",
+        "http://cdn.elatis.cn/archives/271/56866134_p0.jpg"
+    ],
     "crystal_info": {
         "carving": "雕刻",
         "definition": "术语与定义",
@@ -18,29 +22,25 @@
         "luster": "光泽",
         "transparency": "透明度",
         "cleavage": "解理",
-        "optical": "光性特征",
+        "optical": "光线特征",
         "mohs": "摩氏硬度",
         "density": "密度",
         "refraction": "折射率",
         "fluorescence": "荧光观察",
         "infrared": "红外光谱",
         "microscopic": "显微结构",
-        "special_optical": "特殊光学效应",
+        "special_optical": "光学效应",
         "crystal_system": "晶系",
         "dispersion": "抛光",
         "others": {
-            "working_hours":"xxx",
+            "working_hours":"工时",
             "special_technology":"特殊工艺",
-            "make_infomation":"特殊工艺",   
+            "make_infomation":"制作信息",   
             "variety":"品种",   
-            "lawyer_file":"法律文件"
+            "lawyer_file":"法律文件",
             "save":"托管和存放"
         }
     },
-    "picture_url": [
-        "http://cdn.elatis.cn/archives/313/66613251_p0_2.png",
-        "http://cdn.elatis.cn/archives/271/56866134_p0.jpg"
-    ],
     "third_valuation": 19000.5,
     "holder_valuation": 35000.5,
     "certification_info": {

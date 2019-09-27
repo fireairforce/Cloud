@@ -89,7 +89,13 @@ function ValueSix(props, ref) {
   useImperativeHandle(ref, () => ({
     form,
     validate6: () => {
-      const validateArray = [];
+      const validateArray = [
+        "infrared",
+        "lawyer_file",
+        "save",
+        "holder_valuation",
+        "third_valuation",
+      ];
       let error = "";
       let value = {};
       form.validateFields(validateArray, (err, values) => {

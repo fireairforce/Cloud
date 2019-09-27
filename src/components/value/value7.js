@@ -108,7 +108,17 @@ function ValueSeven(props, ref) {
   useImperativeHandle(ref, () => ({
     form,
     validate7: () => {
-      const validateArray = [];
+      const validateArray = [
+        "cert_report",
+        "cert_report_picture",
+        "cert_body",
+        "cert_date",
+        "cert_examiner",
+        "reward_info",
+        "record_article",
+        "name_predict",
+        "record_condition",
+      ];
       let error = "";
       let value = {};
       form.validateFields(validateArray, (err, values) => {
