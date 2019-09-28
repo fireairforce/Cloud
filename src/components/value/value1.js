@@ -88,8 +88,7 @@ function ValueOne({ form, classStep, selectdata }, ref) {
         error = err;
         value = values;
         const catalog = value.name.split('+');
-        value.categories_id = catalog[0];
-        value.name = catalog[1];
+        [value.categories_id,value.name] = catalog;
         if (fileList.length !== 0) {
           value.picture_url = [];
           fileList.map((item) => {

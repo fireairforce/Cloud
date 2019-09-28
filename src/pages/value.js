@@ -31,6 +31,7 @@ function getToken() {
 function Main() {
   const [stepIndex, setStepIndex] = useState(0);
   const [valueContent, setValueContent] = useState([]);
+  const [finalValue, setFinalValue] = useState([]);
   const [selectData, setSelectData] = useState([]);
   useEffect(() => {
     if (getToken()) {
@@ -48,67 +49,7 @@ function Main() {
       }
     });
   }, []);
-  const validateRef0 = useRef(null);
-  const validateRef1 = useRef(null);
-  const validateRef2 = useRef(null);
-  const validateRef3 = useRef(null);
-  const validateRef4 = useRef(null);
-  const validateRef5 = useRef(null);
-  const validateRef6 = useRef(null);
-  const goNext = () => {
-    if (stepIndex === 0) {
-      let [error, value] = validateRef0.current.validate1();
-      if (!error) {
-        setValueContent([...valueContent, value]);
-        setStepIndex((c) => c + 1);
-      }
-    } else if (stepIndex === 1) {
-      let [err, values] = validateRef1.current.validate2();
-      if (!err) {
-        setValueContent([...valueContent, values]);
-        setStepIndex((c) => c + 1);
-      }
-    } else if (stepIndex === 2) {
-      let [err, values] = validateRef2.current.validate3();
-      if (!err) {
-        setValueContent([...valueContent, values]);
-        setStepIndex((c) => c + 1);
-      }
-    } else if (stepIndex === 3) {
-      let [err, values] = validateRef3.current.validate4();
-      if (!err) {
-        setValueContent([...valueContent, values]);
-        setStepIndex((c) => c + 1);
-      }
-    } else if (stepIndex === 4) {
-      let [err, values] = validateRef4.current.validate5();
-      if (!err) {
-        setValueContent([...valueContent, values]);
-        setStepIndex((c) => c + 1);
-      }
-    } else if (stepIndex === 5) {
-      let [err, values] = validateRef5.current.validate6();
-      if (!err) {
-        setValueContent([...valueContent, values]);
-        setStepIndex((c) => c + 1);
-      }
-    }
-  };
-  const goPrev = () => {
-    // 上一步时把之前存的删一下
-    const tempValue = valueContent;
-    tempValue.splice(stepIndex - 1, 1);
-    setValueContent(tempValue);
-    setStepIndex((c) => c - 1);
-  };
-  const startValue = () => {
-    if (stepIndex === 6) {
-      let [err, values] = validateRef6.current.validate7();
-      if (!err) {
-        setValueContent([...valueContent, values]);
-      }
-    }
-    console.log(valueContent);
+  useEffect(() => {
     const valuePush = {};
     valuePush.shape = {};
     valuePush.reward_info = {};
@@ -162,7 +103,77 @@ function Main() {
         }
       }
     }
+    for (let key in valuePush) {
+      if (!valuePush[key]) {
+        delete valuePush.key;
+      }
+    }
     console.log(valuePush);
+  }, [finalValue]);
+  const validateRef0 = useRef(null);
+  const validateRef1 = useRef(null);
+  const validateRef2 = useRef(null);
+  const validateRef3 = useRef(null);
+  const validateRef4 = useRef(null);
+  const validateRef5 = useRef(null);
+  const validateRef6 = useRef(null);
+
+  const goNext = () => {
+    if (stepIndex === 0) {
+      let [error, value] = validateRef0.current.validate1();
+      if (!error) {
+        setValueContent([...valueContent, value]);
+        setStepIndex((c) => c + 1);
+      }
+    } else if (stepIndex === 1) {
+      let [err, values] = validateRef1.current.validate2();
+      if (!err) {
+        setValueContent([...valueContent, values]);
+        setStepIndex((c) => c + 1);
+      }
+    } else if (stepIndex === 2) {
+      let [err, values] = validateRef2.current.validate3();
+      if (!err) {
+        setValueContent([...valueContent, values]);
+        setStepIndex((c) => c + 1);
+      }
+    } else if (stepIndex === 3) {
+      let [err, values] = validateRef3.current.validate4();
+      if (!err) {
+        setValueContent([...valueContent, values]);
+        setStepIndex((c) => c + 1);
+      }
+    } else if (stepIndex === 4) {
+      let [err, values] = validateRef4.current.validate5();
+      if (!err) {
+        setValueContent([...valueContent, values]);
+        setStepIndex((c) => c + 1);
+      }
+    } else if (stepIndex === 5) {
+      let [err, values] = validateRef5.current.validate6();
+      if (!err) {
+        setValueContent([...valueContent, values]);
+        setStepIndex((c) => c + 1);
+      }
+    }
+  };
+
+  const goPrev = () => {
+    // 上一步时把之前存的删一下
+    const tempValue = valueContent;
+    tempValue.splice(stepIndex - 1, 1);
+    setValueContent(tempValue);
+    setStepIndex((c) => c - 1);
+  };
+
+  const startValue = () => {
+    if (stepIndex === 6) {
+      let [err, values] = validateRef6.current.validate7();
+      if (!err) {
+        setValueContent([...valueContent, values]);
+      }
+    }
+    setFinalValue(valueContent);
   };
 
   const judgeHeight = () => {

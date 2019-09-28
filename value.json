@@ -2,6 +2,8 @@
     "name": "钻石啊",
     "categories_id": 1,
     "quality": 1.5,
+    "third_valuation": 19000.5,
+    "holder_valuation": 35000.5,
     "shape": {
         "length": 0.1,
         "height": 0.3,
@@ -41,8 +43,6 @@
             "save":"托管和存放"
         }
     },
-    "third_valuation": 19000.5,
-    "holder_valuation": 35000.5,
     "certification_info": {
         "cert_report":"是否存在报告",
         "cert_report_picture": [
