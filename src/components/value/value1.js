@@ -5,12 +5,12 @@ import React, {
 } from "react";
 import { Form, Input, Select, Upload, Icon, Modal } from "antd";
 import styles from "./style/value.module.less";
-import { getToken } from "utils/qiniu";
+import { getToken ,base_url } from "utils/qiniu";
 import { valueOption1 } from "utils/options";
 // 七牛默认的上传地址
 const QINIU_SERVER = "http://upload.qiniup.com";
 // bucket绑定的URL
-const BASE_QINIU_URL = "http://wdlj.zoomdong.xin/";
+const BASE_QINIU_URL = base_url;
 const FormItem = Form.Item;
 const Option = Select.Option;
 const { TextArea } = Input;

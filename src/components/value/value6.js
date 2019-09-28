@@ -1,13 +1,13 @@
 import React, { useState, forwardRef, useImperativeHandle } from "react";
 import styles from "./style/value.module.less";
 import { Upload, Form, Icon, Input, Modal } from "antd";
-import { getToken } from "utils/qiniu";
+import { getToken,base_url } from "utils/qiniu";
 import verity from "utils/regex";
 
 // 七牛默认的上传地址
 const QINIU_SERVER = "http://upload.qiniup.com";
 // bucket绑定的URL
-const BASE_QINIU_URL = "http://wdlj.zoomdong.xin/";
+const BASE_QINIU_URL = base_url;
 const FormItem = Form.Item;
 
 function ValueSix({form,classStep}, ref) {

@@ -36,7 +36,6 @@ function Main() {
   const [selectData, setSelectData] = useState([]);
   useEffect(() => {
     if (getToken()) {
-      console.log(getToken());
       localStorage.setItem("token", getToken());
     }
   }, []);

@@ -1,12 +1,12 @@
 import React, { useState, forwardRef, useImperativeHandle } from "react";
 import { Form, Radio, Input, Upload, Modal, Icon } from "antd";
 import styles from "./style/value.module.less";
-import { getToken } from "utils/qiniu";
+import { getToken,base_url } from "utils/qiniu";
 
 // 七牛默认的上传地址
 const QINIU_SERVER = "http://upload.qiniup.com";
 // bucket绑定的URL
-const BASE_QINIU_URL = "http://wdlj.zoomdong.xin/";
+const BASE_QINIU_URL = base_url;
 const FormItem = Form.Item;
 const RadioGroup = Radio.Group;
 
