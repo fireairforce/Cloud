@@ -2,6 +2,7 @@ import React, { useState, forwardRef, useImperativeHandle } from "react";
 import styles from "./style/value.module.less";
 import { Upload, Form, Icon, Input, Modal } from "antd";
 import { getToken } from "utils/qiniu";
+import verity from "utils/regex";
 
 // 七牛默认的上传地址
 const QINIU_SERVER = "http://upload.qiniup.com";
@@ -184,7 +185,10 @@ function ValueSix({form,classStep}, ref) {
 
           <FormItem label="持有人出价" {...formItemLayout}>
             {getFieldDecorator("holder_valuation", {
-              rules: [
+              rules: [{
+                pattern: verity.number,
+                message:'请按照规范填写'
+              },
                 {
                   required: false
                 }
@@ -194,7 +198,10 @@ function ValueSix({form,classStep}, ref) {
 
           <FormItem label="第三方估值" {...formItemLayout}>
             {getFieldDecorator("third_valuation", {
-              rules: [
+              rules: [{
+                pattern: verity.number,
+                message:'请按照规范填写'
+              },
                 {
                   required: false
                 }

@@ -13,7 +13,7 @@ import { Button } from "antd";
 import styles from "components/value/style/main.module.less";
 // 请求函数
 import * as req from "api/api.js";
-// mock数据测试
+
 const componentMap = [
   ValueOne,
   ValueTwo,
@@ -25,7 +25,8 @@ const componentMap = [
 ];
 
 function getToken() {
-  return window.location.search.split("=")[1];
+  const token = decodeURI(window.location.search.slice(7));
+  return token;
 }
 
 function Main() {
@@ -35,6 +36,7 @@ function Main() {
   const [selectData, setSelectData] = useState([]);
   useEffect(() => {
     if (getToken()) {
+      console.log(getToken());
       localStorage.setItem("token", getToken());
     }
   }, []);
@@ -50,65 +52,71 @@ function Main() {
     });
   }, []);
   useEffect(() => {
-    const valuePush = {};
-    valuePush.shape = {};
-    valuePush.reward_info = {};
-    valuePush.certification_info = {};
-    valuePush.crystal_info = {};
-    valuePush.crystal_info.others = {};
-    // 洗一下数据,sb后端
-    for (let i = 0; i < valueContent.length; i++) {
-      for (let id in valueContent[i]) {
-        let item = valueContent[i][id];
-        if (item) {
-          if (id === "length" || id === "height" || id === "width") {
-            valuePush.shape[id] = item;
-          } else if (
-            id === "name" ||
-            id === "categories_id" ||
-            id === "quality" ||
-            id === "third_valuation" ||
-            id === "holder_valuation"
-          ) {
-            valuePush[id] = item;
-          } else if (
-            id === "reward" ||
-            id === "record_article" ||
-            id === "record_condition" ||
-            id === "name_predict"
-          ) {
-            valuePush.reward_info[id] = item;
-          } else if (
-            id === "cert_report" ||
-            id === "cert_report_picture" ||
-            id === "cert_body" ||
-            id === "cert_date" ||
-            id === "cert_examiner"
-          ) {
-            valuePush.certification_info[id] = item;
-          } else {
-            if (
-              id === "working_hours" ||
-              id === "special_technology" ||
-              id === "make_infomation" ||
-              id === "variety" ||
-              id === "lawyer_file" ||
-              id === "save"
+    if (finalValue.length !== 0) {
+      const valuePush = {};
+      valuePush.shape = {};
+      valuePush.reward_info = {};
+      valuePush.certification_info = {};
+      valuePush.crystal_info = {};
+      valuePush.crystal_info.others = {};
+      // 洗一下数据,sb后端
+      for (let i = 0; i < valueContent.length; i++) {
+        for (let id in valueContent[i]) {
+          let item = valueContent[i][id];
+          if (item) {
+            if (id === "length" || id === "height" || id === "width") {
+              valuePush.shape[id] = item;
+            } else if (
+              id === "name" ||
+              id === "categories_id" ||
+              id === "quality" ||
+              id === "third_valuation" ||
+              id === "holder_valuation"
             ) {
-              valuePush.crystal_info.others[id] = item;
+              valuePush[id] = item;
+            } else if (
+              id === "reward" ||
+              id === "record_article" ||
+              id === "record_condition" ||
+              id === "name_predict"
+            ) {
+              valuePush.reward_info[id] = item;
+            } else if (
+              id === "cert_report" ||
+              id === "cert_report_picture" ||
+              id === "cert_body" ||
+              id === "cert_date" ||
+              id === "cert_examiner"
+            ) {
+              valuePush.certification_info[id] = item;
             } else {
-              valuePush.crystal_info[id] = item;
+              if (
+                id === "working_hours" ||
+                id === "special_technology" ||
+                id === "make_infomation" ||
+                id === "variety" ||
+                id === "lawyer_file" ||
+                id === "save"
+              ) {
+                valuePush.crystal_info.others[id] = item;
+              } else {
+                valuePush.crystal_info[id] = item;
+              }
             }
           }
         }
       }
-    }
-    for (let key in valuePush) {
-      if (!valuePush[key]) {
-        delete valuePush.key;
+      for (let key in valuePush) {
+        if (!valuePush[key]) {
+          delete valuePush.key;
+        }
       }
+      req.startValue(valuePush).then((res) => {
+        if (res.code === 0) {
+          console.log(`提交成功了`);
+        }
+      });
     }
-    console.log(valuePush);
   }, [finalValue]);
   const validateRef0 = useRef(null);
   const validateRef1 = useRef(null);
@@ -187,7 +195,6 @@ function Main() {
       };
     }
   };
-  console.log(valueContent);
   return (
     <div className={styles.bigBack} style={judgeHeight()}>
       <div className={styles.header}>

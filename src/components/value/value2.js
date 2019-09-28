@@ -1,6 +1,7 @@
 import React, { forwardRef, useImperativeHandle } from "react";
 import styles from "./style/value.module.less";
 import { Form, Input } from "antd";
+import verity from "utils/regex";
 
 const listData = [
   {
@@ -8,28 +9,35 @@ const listData = [
     label: "质量",
     placeholder: "例：约 5（克）",
     field: "quality",
-    message: "请填写宝石的质量"
+    message: "请填写宝石的质量",
+    verity: verity.number,
+    word:'请按规范填写数字'
   },
   {
     id: 2,
     label: "长",
     placeholder: "例：约 5（mm）",
     field: "length",
-    message: "请填写宝石的长"
+    message: "请填写宝石的长",
+    verity: verity.number,
+    word:'请按规范填写数字'
   },
   {
     id: 3,
     label: "宽",
     placeholder: "例：约 5（mm）",
     field: "width",
-    message: "请填写宝石的宽"
+    message: "请填写宝石的宽",
+    verity: verity.number,
+    word:'请按规范填写数字'
   },
   {
     id: 4,
     label: "高",
     placeholder: "例：约 5（mm）",
     field: "height",
-    message: "请填写宝石的高"
+    message: "请填写宝石的高",
+    word:'请按规范填写数字'
   },
   {
     id: 5,
@@ -56,7 +64,13 @@ function ValueTwo({form,classStep}, ref) {
   useImperativeHandle(ref, () => ({
     form,
     validate2: () => {
-      const validateArray = [];
+      const validateArray = [
+        "quality",
+        "length",
+        "width",
+        "height",
+        "carving"
+      ];
       listData.map(item => {
         validateArray.push(item.field);
       });
@@ -78,7 +92,10 @@ function ValueTwo({form,classStep}, ref) {
             return (
               <Form.Item label={item.label} key={item.id}>
                 {getFieldDecorator(item.field, {
-                  rules: [
+                  rules: [{
+                    pattern:item.verity?item.verity:'',
+                    message: item.word?item.word:'',
+                  },
                     {
                       required: true,
                       message: item.message
