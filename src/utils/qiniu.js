@@ -5,7 +5,7 @@ qiniu.conf.ACCESS_KEY = Qiniu.AK;
 qiniu.conf.SECRET_KEY = Qiniu.SK;
 const bucket = Qiniu.bucket;
 
-export const BASE_QINIU_URL = Qiniu.url;
+export const base_url = Qiniu.url;
 
 export const getToken = () => {
     const putPolicy = new qiniu.rs.PutPolicy({
@@ -13,3 +13,4 @@ export const getToken = () => {
     })
     return putPolicy.uploadToken();
 }
+    
