@@ -37,6 +37,7 @@ const listData = [
     placeholder: "例：约 5（mm）",
     field: "height",
     message: "请填写宝石的高",
+    verity: verity.number,
     word:'请按规范填写数字'
   },
   {

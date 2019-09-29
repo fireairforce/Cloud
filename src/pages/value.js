@@ -9,10 +9,12 @@ import ValueSix from "components/value/value6";
 import ValueSeven from "components/value/value7";
 // 头部和底部
 import back from "assets/color.png";
-import { Button } from "antd";
+import { Button ,Modal ,message } from "antd";
 import styles from "components/value/style/main.module.less";
 // 请求函数
 import * as req from "api/api.js";
+
+const { confirm } = Modal;
 
 const componentMap = [
   ValueOne,
@@ -28,12 +30,13 @@ function getToken() {
   const token = decodeURI(window.location.search.slice(7));
   return token;
 }
-
 function Main() {
   const [stepIndex, setStepIndex] = useState(0);
   const [valueContent, setValueContent] = useState([]);
   const [finalValue, setFinalValue] = useState([]);
   const [selectData, setSelectData] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [disable,setDisable] = useState(false);
   useEffect(() => {
     if (getToken()) {
       localStorage.setItem("token", getToken());
@@ -111,8 +114,15 @@ function Main() {
         }
       }
       req.startValue(valuePush).then((res) => {
-        if (res.code === 0) {
-          console.log(`提交成功了`);
+        if (res.code === 0 || res.code === '0') {
+          message.success('您已经成功提交信息');
+          setLoading(false);
+          setDisable(true);
+        } else if(res.code===3001||res.code === '3001'){
+          Modal.error({
+            title: '您的登录已经过期,请您重新登录后再填写信息',
+          });
+          setLoading(false);
         }
       });
     }
@@ -165,22 +175,31 @@ function Main() {
     }
   };
 
+  function showConfirm() {
+    confirm({
+      title: '确认开始估值?',
+      onOk() {
+        if (stepIndex === 6) {
+          let [err, values] = validateRef6.current.validate7();
+          if (!err) {
+            setValueContent([...valueContent, values]);
+          }
+        }
+        setLoading(true);
+        setFinalValue(valueContent);
+      },
+      onCancel() {
+        console.log('Cancel');
+      },
+    });
+  }
+
   const goPrev = () => {
     // 上一步时把之前存的删一下
     const tempValue = valueContent;
     tempValue.splice(stepIndex - 1, 1);
     setValueContent(tempValue);
     setStepIndex((c) => c - 1);
-  };
-
-  const startValue = () => {
-    if (stepIndex === 6) {
-      let [err, values] = validateRef6.current.validate7();
-      if (!err) {
-        setValueContent([...valueContent, values]);
-      }
-    }
-    setFinalValue(valueContent);
   };
 
   const judgeHeight = () => {
@@ -246,7 +265,7 @@ function Main() {
             <Button type="primary" className={styles.btn1} onClick={goPrev}>
               上一步
             </Button>
-            <Button type="primary" className={styles.btn2} onClick={startValue}>
+            <Button type="primary" className={styles.btn2} onClick={showConfirm} loading={loading} disabled={disable}>
               开始估值
             </Button>
           </div>
