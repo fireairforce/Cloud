@@ -58,6 +58,6 @@ module.exports = override(
       landscapeWidth: 568
     })
   ]),
-  // ENV==='production' && setWebpackPublicPath('/'),
+  ENV==='production' && setWebpackPublicPath('http://wdlj.zoomdong.xin/'),
   // ENV === "production" && addWebpackPlugin(qiniuPlugin)
 );
