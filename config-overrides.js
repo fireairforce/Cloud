@@ -7,15 +7,11 @@ const {
   addPostcssPlugins,
   addDecoratorsLegacy,
   removeModuleScopePlugin,
-  addWebpackPlugin,
   setWebpackPublicPath
 } = require("customize-cra");
-const QiniuPlugin = require("qn-webpack");
 const { resolve } = require("path");
 const ENV = process.env.NODE_ENV;
 
-const { qn } = require("./pushConfig");
-const qiniuPlugin = new QiniuPlugin(qn);
 // 关闭sourcemap
 process.env.GENERATE_SOURCEMAP = "false";
 
@@ -58,6 +54,5 @@ module.exports = override(
       landscapeWidth: 568
     })
   ]),
-  // ENV==='production' && setWebpackPublicPath('http://wdlj.zoomdong.xin/'),
-  // ENV === "production" && addWebpackPlugin(qiniuPlugin)
+  ENV==='production' && setWebpackPublicPath('http://wdlj.zoomdong.xin/'),
 );

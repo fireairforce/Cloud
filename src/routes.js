@@ -25,6 +25,11 @@ const News = Loadable({
   loading: Loading
 })
 
+const Test = Loadable({
+  loader: () => import('./pages/test'),
+  loading:Loading
+})
+
 export default [
   {
     name: '估值页面',
@@ -38,6 +43,11 @@ export default [
     path: '/news',
     component: News,
     key: 1
+  },{
+    name:'测试页面',
+    path:'/test',
+    component:Test,
+    key: 2
   }
 ]
 

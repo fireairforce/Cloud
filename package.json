@@ -14,8 +14,8 @@
     "react-scripts": "3.1.1"
   },
   "scripts": {
-    "start": "cross-env NODE_ENV=development react-app-rewired start",
-    "build": "cross-env NODE_ENV=production react-app-rewired build",
+    "start": "react-app-rewired start",
+    "build": "cross-env NODE_ENV=production react-app-rewired build && node uploadQiniu.js",
     "push": "fjpublish env dev -y",
     "test": "react-app-rewired test"
   },

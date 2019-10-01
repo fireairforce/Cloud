@@ -1,6 +1,6 @@
 export const Qiniu = {
-    AK:'',
-    SK:'',
-    bucket:'',
-    url:''
-}
+  AK: "",
+  SK: "",
+  bucket: "",
+  url: "",
+};

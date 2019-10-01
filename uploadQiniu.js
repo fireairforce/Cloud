@@ -54,15 +54,15 @@ let getStaticFile = async (path) => {
           if (stats.isDirectory()) {
             getStaticFile(`${path}/${item}`);
           } else if (stats.isFile()) {
-            if (`${path}/${item}`.split("/").indexOf("static") !== -1) {
-              // let res;
-              uploadFile(
-                `${path}/${item}`,
-                getFileName(`${path}/${item}`),
-              ).then((data) => {
-                console.log(`${publicPath}${data.key} 上传成功啦!!!` );
-              });
-            }
+              if(`${path}/${item}`.indexOf('static')!==-1){
+                uploadFile(
+                  `${path}/${item}`,
+                  getFileName(`${path}/${item}`),
+                ).then((data) => {
+                  
+                  console.log(`${publicPath}${data.key} 上传成功啦!!!` );
+                });
+              }
           }
         }
       });
