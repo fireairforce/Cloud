@@ -98,13 +98,13 @@ const getStaticFile = (path) => {
 };
 
 getStaticFile(absoultePath);
-// 把进程往后面阻塞一下
 
-setTimeout(() => {
-  FileKey.forEach((item) => {
-    changeMimeType(item).then((res) => {
-      console.log(res);
-      console.log(`${item} 的mimeType修改成功`);
-    });
-  });
-}, 5000);
+
+// 把进程往后面阻塞一下
+// setTimeout(() => {
+//   FileKey.forEach((item) => {
+//     changeMimeType(item).then((res) => {
+//       console.log(`${item} 的mimeType修改成功`);
+//     });
+//   });
+// }, 5000);
