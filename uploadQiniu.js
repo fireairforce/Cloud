@@ -54,7 +54,7 @@ const changeMimeType = (key) => {
         reject(err);
       } else {
         if (info.statusCode === 200) {
-          resolve({ ret, info });
+          resolve(info);
         } else {
           reject(info);
         }
@@ -88,6 +88,9 @@ const getStaticFile = (path) => {
                 getFileName(`${path}/${item}`),
               ).then((data) => {
                 console.log(`${publicPath}${data.key} 上传成功啦!!!`);
+                return changeMimeType(getFileName(`${path}/${item}`))
+              }).then(res=>{
+                console.log(`文件的mimeType处理成功`);
               });
             }
           }
@@ -98,13 +101,3 @@ const getStaticFile = (path) => {
 };
 
 getStaticFile(absoultePath);
-
-
-// 把进程往后面阻塞一下
-// setTimeout(() => {
-//   FileKey.forEach((item) => {
-//     changeMimeType(item).then((res) => {
-//       console.log(`${item} 的mimeType修改成功`);
-//     });
-//   });
-// }, 5000);
