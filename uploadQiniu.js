@@ -21,10 +21,8 @@ const putPolicy = new qiniu.rs.PutPolicy(options);
 // token鉴权
 const uploadToken = putPolicy.uploadToken(mac);
 const putExtra = new qiniu.form_up.PutExtra();
-
-let FileKey = [];
-
 const absoultePath = resolve(__dirname, "./build/");
+
 const uploadFile = async (file, key) => {
   return new Promise((resolve, reject) => {
     formUploader.putFile(uploadToken, key, file, putExtra, (err, ret, info) => {
@@ -68,7 +66,6 @@ const getFileName = (file) => {
   for (let i = 0; i < 7; i++) {
     file.shift();
   }
-  FileKey.push(file.join("/"));
   return file.join("/");
 };
 
@@ -82,6 +79,7 @@ const getStaticFile = (path) => {
           if (stats.isDirectory()) {
             getStaticFile(`${path}/${item}`);
           } else if (stats.isFile()) {
+            // 只对静态资源进行了处理
             if (`${path}/${item}`.indexOf("static") !== -1) {
               uploadFile(
                 `${path}/${item}`,
@@ -90,9 +88,9 @@ const getStaticFile = (path) => {
                 console.log(`${publicPath}${data.key} 上传成功啦!!!`);
                 return changeMimeType(getFileName(`${path}/${item}`))
               }).then(res=>{
-                console.log(`文件的mimeType处理成功`);
+                console.log(`${item}的mimeType处理成功`);
               });
-            }
+            } 
           }
         }
       });

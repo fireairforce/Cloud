@@ -1,6 +1,7 @@
 import React from 'react'
-import Loadable from 'react-loadable';
 import { Spin } from 'antd';
+import Value from './pages/value';
+import News from './pages/news';
 
 function Loading({ error }) {
   if (error) {
@@ -15,20 +16,20 @@ function Loading({ error }) {
   }
 }
 
-const Value = Loadable({
-  loader: () => import('./pages/value'),
-  loading: Loading
-});
+// const Value = Loadable({
+//   loader: () => import('./pages/value'),
+//   loading: Loading
+// });
 
-const News = Loadable({
-  loader: () => import('./pages/news'),
-  loading: Loading
-})
+// const News = Loadable({
+//   loader: () => import('./pages/news'),
+//   loading: Loading
+// })
 
-const Test = Loadable({
-  loader: () => import('./pages/test'),
-  loading:Loading
-})
+// const Test = Loadable({
+//   loader: () => import('./pages/test'),
+//   loading:Loading
+// })
 
 export default [
   {
@@ -43,11 +44,6 @@ export default [
     path: '/news',
     component: News,
     key: 1
-  },{
-    name:'测试页面',
-    path:'/test',
-    component:Test,
-    key: 2
   }
 ]
 
