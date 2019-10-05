@@ -30,6 +30,10 @@ import styles from "index.module.less";
 调底部button到表单内容在footer里改margin-top值就可以。
 页面二的高随stepIndex改变，当StepIndex === 1的时候就可以正常显示
 
+### 上线问题
+目前的路由懒加载已经移除了`react-loadable`,使用`react`原生采用的`lazy`和`Suspense`，但是路由切割打包后使用脚本上线的话会出现很奇怪的现象。
+就是有的懒加载分割出来的`css`文件不能被使用正确的传输方式进行加载，所以目前项目里面并没有采用路由的懒加载。
+
 ## 接口情况
 
 ```json

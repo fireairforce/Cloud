@@ -1,35 +1,9 @@
-import React from 'react'
-import { Spin } from 'antd';
+// import React , { lazy } from 'react'
 import Value from './pages/value';
 import News from './pages/news';
 
-function Loading({ error }) {
-  if (error) {
-    return 'Opps Error!!';
-  } else {
-    return (
-      <Spin size='large'
-        style={{
-          width: '100%',
-          margin: '60px auto'
-        }} />)
-  }
-}
-
-// const Value = Loadable({
-//   loader: () => import('./pages/value'),
-//   loading: Loading
-// });
-
-// const News = Loadable({
-//   loader: () => import('./pages/news'),
-//   loading: Loading
-// })
-
-// const Test = Loadable({
-//   loader: () => import('./pages/test'),
-//   loading:Loading
-// })
+// const Value = lazy(()=> import('./pages/value'));
+// const News = lazy(()=>import('./pages/news'));
 
 export default [
   {
