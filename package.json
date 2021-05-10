@@ -37,7 +37,7 @@
     "customize-cra": "^0.8.0",
     "fjpublish": "^2.0.1",
     "less-loader": "^5.0.0",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.21",
     "postcss-px-to-viewport": "^1.1.1",
     "qn-webpack": "^2.0.3",
     "react-app-rewired": "^2.1.3"
